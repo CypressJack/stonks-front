@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
+import apiFetch from "./hooks/apiFetch";
 
 import Button from "@material-ui/core/Button";
 
@@ -10,25 +10,17 @@ import { StylesProvider } from "@material-ui/core/styles";
 
 export default function App() {
 
-  const fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+  const {state} = apiFetch();
 
-      console.log(response.data.message) // Just the message
-    })
-  }
-  
+  console.log("users", state.users.users)
+  console.log("stocks", state.stocks.stocks)
+  console.log("transacts", state.transactions.transactions)
+  console.log("tutorials", state.tutorials.tutorials)
+  console.log("news", state.news.allnews)
+
   return (
-    // All child components will inherit styling defined in globalStyleOverride.css
-      <StylesProvider injectFirst>
-        <div className="App">
-          <h1>Hi There!</h1>
-            <Button variant={"contained"} onClick={fetchData} >
-              Fetch Data
-            </Button>        
-        </div>
-      </StylesProvider>
+    <div className="App">
+      <h1>Hi There!</h1>
+     </div>
   );
 }
