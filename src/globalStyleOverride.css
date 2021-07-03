@@ -1,0 +1,24 @@
+
+/*Override Styling example for material ui button component or MuiButton*/
+/*This syntax is repeated for all material UI Components*/
+.MuiButton-root {
+  background-color: #25A55F;
+  color: white;
+}
+/*Any existing effects can be overriden, or defined if not already*/
+.MuiButton-root:hover {
+  background-color: #1c834a;
+}
+
+/*This is a class applied to a single button*/
+.red-button {
+  background-color: #C47777;
+}
+
+.red-button:hover {
+  background-color: #a76262;
+}
+
+.MuiButton-tutorial {
+  width: 80%;
+} 
