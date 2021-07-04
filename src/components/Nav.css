@@ -1,0 +1,16 @@
+.nav-main {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  color: #A2A2A2;
+  border: 2px solid black;
+  height: 60px; /*might need to change once mobile*/
+  align-items: center;
+}
+
+.nav-button {
+  color: #A2A2A2;
+}
+/* .selected {
+  color: #000000
+} */

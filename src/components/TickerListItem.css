@@ -1,0 +1,29 @@
+.ticker-list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  color: #636363;
+  box-shadow: 0px 24px 2px -24px #666666; /* last px value can be changed to -25 for less opaque/thinner divider*/
+}
+
+.ticker-head {
+display: flex;
+ justify-content: space-between;
+ margin: 5px;
+}
+
+.ticker-footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+  color: #666666;
+}
+
+.green-percentage {
+  color: #25A55F;
+}
+
+.red-percentage {
+  color: #C47777
+}
