@@ -4,7 +4,7 @@ import Settings from "@material-ui/icons/Settings"
 import AccountCircle from "@material-ui/icons/AccountCircle"
 import Learn from "@material-ui/icons/ImportContacts"
 import ArtTrackRounded from "@material-ui/icons/ArtTrackRounded";
-import "./Nav.css";
+import "./Nav.scss";
 import Button from "./Button";
 export default function Nav(props) {
   let isSelected = "";

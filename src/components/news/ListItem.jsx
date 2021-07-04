@@ -1,6 +1,6 @@
 import React from "react";
 
-import "components/news/news.css"
+import "components/news/news.scss"
 
 export default function ListItem(props) {
 
