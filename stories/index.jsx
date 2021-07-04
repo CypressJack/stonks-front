@@ -2,8 +2,10 @@ import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { StylesProvider } from "@material-ui/core/styles";
+import "./news.jsx";
 import "./TickerList";
 import "./Nav";
+
 // import Button from "@material-ui/core/Button";
 import Button from "components/Button";
 import TickerListItem from "components/TickerListItem";
@@ -40,3 +42,4 @@ storiesOf("TickerListItem", module)
 
   // fullname    per item
   // ticker       percent_change
+

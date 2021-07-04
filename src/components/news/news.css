@@ -1,0 +1,9 @@
+.list-item {
+  border: 2px solid black;
+  color: blueviolet;
+}
+
+.news-image {
+  height: 80px;
+  width: 140px;
+}
