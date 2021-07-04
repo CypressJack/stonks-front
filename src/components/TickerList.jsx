@@ -2,8 +2,6 @@ import React from "react";
 import TickerListItem from "./TickerListItem";
 export default function TickerList(props) {
 
-  console.log("Here", props.stocks.stocks)
-
   let composeTickerItems;
 
   if (props.stocks.stocks){

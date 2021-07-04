@@ -19,8 +19,7 @@ export default function App() {
   // console.log("stocks", state.stocks.stocks)
   // console.log("transacts", state.transactions.transactions)
   // console.log("tutorials", state.tutorials.tutorials)
-  // console.log("news", state.news.allnews)
-
+  console.log("news", state.news.allnews)
 
   return (
     <StylesProvider injectFirst>
