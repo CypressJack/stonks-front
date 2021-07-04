@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import Nav from "../components/Nav";
-
+import NavButton from "../components/NavButton";
 
 storiesOf("Nav", module)
   .add("Base", () => (
@@ -21,4 +21,5 @@ storiesOf("Nav", module)
     <Nav
     onClick={action("Button Clicked!")}
     />
+    
   ));
