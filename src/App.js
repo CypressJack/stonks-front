@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import apiFetch from "./hooks/apiFetch";
 import TickerList from './components/TickerList';
 
 import Button from "@material-ui/core/Button";
 
 // Override styling on any material component in this file
-import "./globalStyleOverride.css";
+import "./globalStyleOverride.scss";
 import { StylesProvider } from "@material-ui/core/styles";
 
 const axios = require("axios");

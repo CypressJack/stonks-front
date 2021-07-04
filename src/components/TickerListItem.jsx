@@ -1,5 +1,5 @@
 import React from "react";
-import "components/TickerListItem.scss"
+import "./TickerListItem.scss"
 
 export default function TickerListItem(props) {
   let pctClass = "red-percentage";
