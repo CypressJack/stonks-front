@@ -4,8 +4,7 @@
   justify-content: space-evenly;
   width: 100%;
   color: #636363;
-  box-shadow: 0px 24px 3px -24px #666666;
-
+  box-shadow: 0px 24px 2px -24px #666666; /* last px value can be changed to -25 for less opaque/thinner divider*/
 }
 
 .ticker-head {

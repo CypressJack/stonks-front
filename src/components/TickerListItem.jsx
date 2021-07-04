@@ -1,5 +1,6 @@
 import React from "react";
 import "components/TickerListItem.css"
+
 export default function TickerListItem(props) {
   let pctClass = "red-percentage";
   let pctDisplay = `${props.pctChange}`;
@@ -17,13 +18,13 @@ export default function TickerListItem(props) {
   }
 
   return (
-    <div className="ticker-list-item">
+    <li className="ticker-list-item">
       <header className="ticker-head">
         <span>{displayName}</span><span>{props.lastSale}</span>
       </header>
       <footer className="ticker-footer">
         <span>{props.symbol}</span><span className={pctClass}>{pctDisplay}</span>
       </footer>
-    </div>
+    </li>
   );
-}
+};
