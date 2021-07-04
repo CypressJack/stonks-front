@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 
-import TickerList from "components/TickerList";
+import TickerList from "../components/TickerList";
 
 const tickerData = [
   {symbol: "AA", name: "Alcoa Corporation Common Stock ", pctChange: "0.326%", lastSale: "$147.79"},

@@ -2,19 +2,19 @@ import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { StylesProvider } from "@material-ui/core/styles";
-import "./news.jsx";
-import "./TickerList";
-import "./Nav";
+import "./news.stories.jsx";
+import "./TickerList.stories";
+import "./Nav.stories";
 
 // import Button from "@material-ui/core/Button";
-import Button from "components/Button";
-import TickerListItem from "components/TickerListItem";
+import Button from "../components/Button";
+import TickerListItem from "../components/TickerListItem";
 
 storiesOf("Button", module)
   .add("Base", () => <StylesProvider injectFirst><Button onClick={action("Button Clicked!")}>Base</Button></StylesProvider>)
-  .add("Sell", () => <StylesProvider injectFirst><Button className="red-button" onClick={action("Button Clicked!")}>Sell</Button></StylesProvider> )
-  .add("Tutorial", () => <StylesProvider injectFirst><Button className="MuiButton-tutorial" onClick={action("Button Clicked!")} completed={false}>Tutorial 1.</Button></StylesProvider>)
-  .add("Completed tutorial", () => <StylesProvider injectFirst><Button className="MuiButton-tutorial" onClick={action("Button Clicked!")} completed={true} >Tutorial 1.</Button></StylesProvider>);
+  .add("Sell", () => <StylesProvider injectFirst><Button className="red-button" onClick={action("Button Clicked!")} sell>Sell</Button></StylesProvider> )
+  .add("Tutorial", () => <StylesProvider injectFirst><Button className="MuiButton-tutorial" onClick={action("Button Clicked!")} tutorial completed={false}>Tutorial 1.</Button></StylesProvider>)
+  .add("Completed tutorial", () => <StylesProvider injectFirst><Button className="MuiButton-tutorial" onClick={action("Button Clicked!")} tutorial completed={true} >Tutorial 1.</Button></StylesProvider>);
 
 const tickerData = [
   {symbol: "AA", name: "Alcoa Corporation Common Stock ", pctChange: "0.326%", lastSale: "$147.79"},

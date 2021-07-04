@@ -1,25 +1,18 @@
-import React from "react";
-import Search from "@material-ui/icons/Search"
-import Settings from "@material-ui/icons/Settings"
-import AccountCircle from "@material-ui/icons/AccountCircle"
-import Learn from "@material-ui/icons/ImportContacts"
-import ArtTrackRounded from "@material-ui/icons/ArtTrackRounded";
+import React, {useState} from "react";
 import "./Nav.scss";
-import Button from "./Button";
-export default function Nav(props) {
-  let isSelected = "";
+import NavButton from "./NavButton";
 
-  if(props.selected) {
-    isSelected = "selected";
-  }
+export default function Nav(props) {
+
+    const [currentSelection, setSelection] = useState(props.selection || null);
 
   return (
     <nav className="nav-main">
-      <Button selected={props.selected}><AccountCircle onClick={props.onClick}/></Button>
-      <Button><Learn onClick={props.onClick}/></Button>
-      <Button><Search onClick={props.onClick}/></Button>
-      <Button><ArtTrackRounded onClick={props.onClick}/></Button>
-      <Button><Settings onClick={props.onClick}/></Button>
+      <NavButton selected={props.selected} account onClick={(event) => setSelection(event)}></NavButton>
+      <NavButton nav={true} learn onClick={(event) => setSelection(event)}></NavButton>
+      <NavButton nav={true} search onClick={(event) => setSelection(event)}></NavButton>
+      <NavButton nav={true} onClick={(event) => setSelection(event)}></NavButton>
+      <NavButton nav={true} settings onClick={(event) => setSelection(event)}></NavButton>
     </nav>
   );
 }
