@@ -2,7 +2,7 @@ import React from "react";
 import MuiButton from "@material-ui/core/Button";
 import check from "@material-ui/icons/Check";
 // Import global styling overrides aka our theme
-import "../globalStyleOverride.css";
+import "../globalStyleOverride.scss";
 
 export default function Button(props) {
   let IsCompleted = null;
