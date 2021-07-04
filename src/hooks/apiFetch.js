@@ -30,6 +30,7 @@ export default function apiFetch() {
         '/api/all-news'
       )
     ]).then((all) => {
+      console.log("finished")
       setState((prev) => ({
         ...prev,
         stocks: all[0].data,

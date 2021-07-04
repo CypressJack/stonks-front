@@ -1,7 +1,8 @@
 import React from "react";
-import "components/TickerListItem.css"
+import "./TickerListItem.css"
 
 export default function TickerListItem(props) {
+  
   let pctClass = "red-percentage";
   let pctDisplay = `${props.pctChange}`;
   let displayNameDeconstructed = [...props.name];
