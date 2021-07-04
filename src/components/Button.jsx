@@ -6,8 +6,13 @@ import "../globalStyleOverride.css";
 
 export default function Button(props) {
   let IsCompleted = null;
+  let buttonClass = props.className;
   if (props.completed) {
     IsCompleted = check
+  }
+
+  if (props.selected) {
+    buttonClass = "selected";
   }
   // const buttonClass = classNames(
   //   'MuiButton ',
