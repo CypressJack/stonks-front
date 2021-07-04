@@ -19,8 +19,13 @@ export default function App() {
   console.log("news", state.news.allnews)
 
   return (
-    <div className="App">
-      <h1>Hi There!</h1>
+    <StylesProvider injectFirst>
+      <div className="App">
+        <h1>Hi There!</h1>
+        <Button>
+          Test Button
+        </Button>
      </div>
+    </StylesProvider>
   );
 }
