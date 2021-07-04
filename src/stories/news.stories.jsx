@@ -4,8 +4,8 @@ import { action } from "@storybook/addon-actions";
 import { StylesProvider } from "@material-ui/core/styles";
 
 
-import ArticleList from "../src/components/news/ArticleList";
-import ListItem from "../src/components/news/ListItem";
+import ArticleList from "../components/news/ArticleList";
+import ListItem from "../components/news/ListItem";
 
 
 const article = {
