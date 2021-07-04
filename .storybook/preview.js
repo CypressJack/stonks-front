@@ -1,3 +1,15 @@
+const customViewports = {
+  phonex: {
+    name: 'iPhone X',
+    styles: {
+      height: '812px',
+      width: '375px',
+    },
+    type: 'mobile',
+  }
+}
+
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -6,4 +18,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  viewport: {
+    viewports: customViewports
+  }
 }
