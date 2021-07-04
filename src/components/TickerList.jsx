@@ -6,6 +6,7 @@ export default function TickerList(props) {
   const composeTickerItems = props.stocks.map(ticker => {
     return (
       <TickerListItem
+      onClick={props.onClick}
       key={ticker.symbol}
       name={ticker.name}
       symbol={ticker.symbol}

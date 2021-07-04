@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { StylesProvider } from "@material-ui/core/styles";
 import "./TickerList";
+import "./Nav";
 // import Button from "@material-ui/core/Button";
 import Button from "components/Button";
 import TickerListItem from "components/TickerListItem";
@@ -25,6 +26,7 @@ storiesOf("TickerListItem", module)
   symbol={tickerData[0].symbol}
   pctChange={tickerData[0].pctChange}
   lastSale={tickerData[0].lastSale}
+  onClick={action("Button Clicked!")}
   />
   ))
   .add("Negative_Percent", () => (<TickerListItem
@@ -32,6 +34,7 @@ storiesOf("TickerListItem", module)
   symbol={tickerData[1].symbol}
   pctChange={tickerData[1].pctChange}
   lastSale={tickerData[1].lastSale}
+  onClick={action("Button Clicked!")}
   />
   ))
 

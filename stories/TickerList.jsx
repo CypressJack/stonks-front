@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { StylesProvider } from "@material-ui/core/styles";
+
 
 import TickerList from "components/TickerList";
 
@@ -15,5 +15,6 @@ storiesOf("TickerList", module)
   .add("TickerList", () => (
     <TickerList
       stocks={tickerData}
+      onClick={action("Button Clicked!")}
     />
   ));
