@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import apiFetch from "./hooks/apiFetch";
+// import apiFetch from "./hooks/apiFetch";
 import TickerList from './components/TickerList';
 
 import Button from "@material-ui/core/Button";
@@ -13,7 +13,7 @@ const axios = require("axios");
 
 export default function App() {
 
-  const {state} = apiFetch();
+  // const {state} = apiFetch();
 
   // console.log("users", state.users.users)
   // console.log("stocks", state.stocks.stocks)
@@ -29,7 +29,7 @@ export default function App() {
         <Button>
           Test Button
         </Button>
-      <TickerList stocks={state.stocks} onClick={console.log("")}/>
+      {/* <TickerList stocks={state.stocks} onClick={console.log("")}/> */}
      </div>
     </StylesProvider>
   );
