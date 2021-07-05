@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Search from "@material-ui/icons/Search"
 import "./SearchBar.scss"
 export default function SearchBar(props) {
