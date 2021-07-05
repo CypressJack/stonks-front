@@ -26,7 +26,7 @@ const para2 = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, c
 
 export default function App() {
   const { state } = useApiData();
-  const { mode, transition, back} = useVisualMode('showstocks')
+  const { mode, transition} = useVisualMode('showstocks')
   const [search, setSearch] = useState("");
 
   // console.log("users", state.users.users)
@@ -34,6 +34,7 @@ export default function App() {
   // console.log("transacts", state.transactions.transactions)
   // console.log("tutorials", state.tutorials.tutorials)
   // console.log("news", state.news.allnews)
+  // console.log("crypto", state.crypto.allcrypto)
   const func = function() {
     return
   }
@@ -44,7 +45,7 @@ export default function App() {
         <div className="app-top-half">
           {mode === 'showtutorials' && (<TutorialsList onClick={()=> transition('showtutorials-individual')}/>)}
           {mode==='showtutorials-individual' &&(<TutorialPage title={title} paragraph1={para1} subtitle1={sub1} paragraph2={para2}/>)}
-          {mode === 'showstocks' && (<TickerList stocks={state.stocks} search={search} searchState={setSearch}onClick={func}/>)}
+          {mode === 'showstocks' && (<TickerList stocks={state.stocks} crypto={state.crypto} search={search} searchState={setSearch}onClick={func}/>)}
           {mode === 'shownews' && (<News news={state.news.allnews}/>)}
         </div>
         <Nav tutorialClick={() => transition('showtutorials')} newsClick={() => transition('shownews')} searchClick={()=> transition('showstocks')}/>

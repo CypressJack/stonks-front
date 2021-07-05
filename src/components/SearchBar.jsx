@@ -5,7 +5,8 @@ export default function SearchBar(props) {
   // const [search, setSearch] = useState("");
 
   return (
-    <div className="search-bar">
+    <div className={"background"}>
+    <div className={"search-bar"}>
       <input
       className={"input"}
       value={props.search}
@@ -13,6 +14,7 @@ export default function SearchBar(props) {
       onChange={(event) => props.searchState(event.target.value)}
       />
       <button search className={"button"} onClick={props.onClick}><Search/></button>
+    </div>
     </div>
   );
 };

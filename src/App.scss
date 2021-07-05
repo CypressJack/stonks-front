@@ -11,7 +11,13 @@
   height: 752px;
   width: auto;
   overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
+
+.app-top-half::-webkit-scrollbar {
+  display: none;
+ }
 
 .App-header {
   background-color: #282c34;
