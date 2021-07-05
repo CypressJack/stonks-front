@@ -1,9 +1,78 @@
+@use '../../globalStyleOverride.scss' as *;
+
 .list-item {
-  border: 2px solid black;
-  color: blueviolet;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-top: 10px;
+  border: 1px solid $box-shadow;
+  box-shadow: 5px 5px 5px $box-shadow;
+  font-size: 13px;
+  border-radius: 5px;
+  margin-left: 0px;
+}
+
+.list-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.article-divider {
+  margin-top: 10px;
+  background-color: rgb(219, 219, 219);
+  width: 90%;
+  border: 1px solid rgb(219, 219, 219);
 }
 
 .news-image {
+  margin:10px;
+  margin-right:15px;
   height: 80px;
-  width: 140px;
+  width: 100px;
+  box-shadow: 5px 3px 5px $box-shadow;
+}
+
+.list-item-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.list-item-heading {
+  color: $font-color-primary;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.list-item-date {
+  color:$stonk-green;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 5px;
+}
+
+.list-item-summary {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.list-item-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
