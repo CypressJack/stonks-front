@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
+import Button from "../Button";
 import "./Graph.scss";
 import {
   ArgumentAxis,
@@ -8,26 +8,20 @@ import {
   LineSeries,
 } from '@devexpress/dx-react-chart-material-ui';
 
-const data = [
-  { argument: 1, value: 10 },
-  { argument: 3, value: 15 },
-  { argument: 4, value: 30 },
-  { argument: 5, value: 15 },
-  { argument: 7, value: 30 },
-  { argument: 8, value: 30 },
-  { argument: 30, value: 30 },
-];
-
-export default function Graph() {
+export default function Graph(props) {
 
   return (
-    <Chart
-      data={data}
+    <div className='chart-container'>
+      <Chart
+      data={props.data}
       height={200}
     >
       <ArgumentAxis
-      f />
+      showLabels={false}
+      showLine={false}
+      showTicks={false} />
       <ValueAxis 
+      showLabels={false}
       showGrid={false}
       />
       <LineSeries 
@@ -35,7 +29,30 @@ export default function Graph() {
       valueField="value"
       argumentField="argument"
       color='#25A55F' />
-    </Chart>
-
+      </Chart>
+      <div className='button-container'>
+        <Button>
+          live
+        </Button>
+        <Button>
+          1D
+        </Button>
+        <Button>
+          1W
+        </Button>
+        <Button>
+          1M
+        </Button>
+        <Button>
+          3M
+        </Button>
+        <Button>
+          1Y
+        </Button>
+        <Button>
+          ALL
+        </Button>
+      </div>
+    </div>
   )
 };
