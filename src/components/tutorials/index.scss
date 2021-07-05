@@ -1,0 +1,13 @@
+.tutorials-body {
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #636363;
+  font-size: 20pt;
+}
+
+Button {
+  box-shadow: 0px 3px 4px #636363;
+}
