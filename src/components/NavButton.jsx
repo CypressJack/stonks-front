@@ -27,6 +27,6 @@ export default function NavButton(props) {
   )
 
   return (
-    <button className={buttonClass} onClick={props.onClick}>{type}</button>
+    <button className={buttonClass} onClick={props.onSelect}>{type}</button>
   );
 }

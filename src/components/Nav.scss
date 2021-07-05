@@ -3,9 +3,10 @@
   justify-content: space-around;
   background-color: white;
   color: #A2A2A2;
-  border: 2px solid black;
   height: 60px; /*might need to change once mobile*/
   align-items: center;
+  box-shadow: inset 0px 2px 0px 0px rgba(50, 50, 50, 0.25);
+  width: 100%;
 }
 
 .nav-button {
