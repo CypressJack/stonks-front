@@ -15,7 +15,7 @@ export default function ListItem(props) {
   return (
     <div className='list-item'>
       <div className = 'list-item-image-container'>
-        <img src={props.img} className="news-image"/>
+        <img src={props.img} alt="" className="news-image"/>
       </div>
       <div className='list-item-text-container'>
         <h4 className='list-item-heading'>

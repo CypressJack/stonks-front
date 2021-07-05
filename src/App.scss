@@ -8,6 +8,13 @@
   pointer-events: none;
 }
 
+.app-top-half {
+  margin: 0;
+  height: 752px;
+  width: auto;
+  overflow: scroll;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

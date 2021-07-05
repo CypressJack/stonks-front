@@ -1,19 +1,18 @@
-import React from 'react';
-import './App.scss';
-// import apiFetch from "./hooks/apiFetch";
-import TickerList from './components/TickerList';
+import React from "react";
+import "./App.scss";
+import useApiData from "./hooks/useApiData";
+import News from "./components/news/Index"
+import TickerList from "./components/TickerList";
+import Nav from "./components/Nav";
 
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 // Override styling on any material component in this file
 import "./globalStyleOverride.scss";
 import { StylesProvider } from "@material-ui/core/styles";
 
-const axios = require("axios");
-
 export default function App() {
-
-  // const {state} = apiFetch();
+  const { state } = useApiData();
 
   // console.log("users", state.users.users)
   // console.log("stocks", state.stocks.stocks)
@@ -24,12 +23,12 @@ export default function App() {
   return (
     <StylesProvider injectFirst>
       <div className="App">
-        <h1>Hi There!</h1>
-        <Button>
-          Test Button
-        </Button>
-      {/* <TickerList stocks={state.stocks} onClick={console.log("")}/> */}
-     </div>
+        <div className="app-top-half">
+          {/* <TickerList stocks={state.stocks} onClick={console.log("")} /> */}
+          <News news={state.news.allnews}/>
+        </div>
+        <Nav />
+      </div>
     </StylesProvider>
   );
 }

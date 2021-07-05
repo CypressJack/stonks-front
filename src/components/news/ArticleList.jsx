@@ -8,28 +8,30 @@ import ListItem from "./ListItem";
   // img
   // headline
   // summary
-
   export default function ArticleList(props) {
+    let articles;
+    
+    if (props.news){
+      articles = props.news.map((article) => {
+        return (
+          <div className='list-item-container' key={article.id}>
+          <ListItem
+          img={article.image}
+          headline={article.headline}
+          summary={article.summary}
+          dateTime={article.datetime}
+          />
+          <div className='article-divider'/>
+          </div>
+        )
+      });
+    }
 
-  const articles = props.news.map((article) => {
     return (
-      <div className='list-item-container'>
-      <ListItem
-      img={article.image}
-      headline={article.headline}
-      summary={article.summary}
-      dateTime={article.datetime}
-      />
-      <div className='article-divider'/>
-      </div>
-    )
-  });
-
-  return (
     <div>
       <ul className='article-list'>
         { articles }
       </ul>
     </div>
-  )
-}
+    )
+  }
