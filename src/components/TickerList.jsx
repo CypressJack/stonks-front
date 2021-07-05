@@ -1,5 +1,8 @@
 import React from "react";
 import TickerListItem from "./TickerListItem";
+import SearchBar from "./SearchBar";
+import Slide from '@material-ui/core/Slide';
+
 export default function TickerList(props) {
 
   let composeTickerItems;
@@ -17,24 +20,14 @@ export default function TickerList(props) {
         />
       );
     });
-  } else {
-    composeTickerItems = props.stocks.map(ticker => {
-      return (
-        <TickerListItem
-        onClick={props.onClick}
-        key={ticker.symbol}
-        name={ticker.name}
-        symbol={ticker.symbol}
-        pctChange={ticker.pctchange}
-        lastSale={ticker.lastSale}
-        />
-      );
-    });
-  }
+  } 
 
   return (
       <section>
+        <SearchBar/>
+        <Slide direction="up" in={true} mountOnEnter unmountOnExit>
         <ul>{composeTickerItems}</ul>
+        </Slide>
       </section>
   );
 }
