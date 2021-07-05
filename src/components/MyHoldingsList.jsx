@@ -1,9 +1,11 @@
 import React from "react";
 import MyHoldingsListItem from "./MyHoldingsListItem";
+import "./MyHoldingsList.scss"
 
 export default function MyHoldingsList(props) {
 
   const composeHoldingsList = props.stocks.map(stock => {
+
     return (
       <MyHoldingsListItem
       key={stock.symbol}
@@ -16,7 +18,7 @@ export default function MyHoldingsList(props) {
   })
 
   return (
-    <ul>
+    <ul className='my-holdings-list'>
       {composeHoldingsList}
     </ul>
   );
