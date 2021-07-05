@@ -42,13 +42,15 @@
   height: 80px;
   width: 100px;
   box-shadow: 5px 3px 5px $box-shadow;
+  border-radius: 5px;
 }
 
 .list-item-text-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
+  padding-bottom: 10px;
 }
 
 .list-item-heading {
