@@ -8,7 +8,8 @@ export default function useApiData() {
     stocks: [],
     tutorials: [],
     transactions: [],
-    news: []
+    news: [],
+    search: ""
   });
 
   //Initial Axios Call to API// All Tokens are hard coded for now
@@ -30,7 +31,6 @@ export default function useApiData() {
         '/api/all-news'
       )
     ]).then((all) => {
-      console.log("finished")
       setState((prev) => ({
         ...prev,
         stocks: all[0].data,
@@ -42,5 +42,9 @@ export default function useApiData() {
     });
   }, []);
 
-  return { state, setState };
+  const setSearch = (string) => {
+    setState((prev)=> ({...prev,day: string}))
+  }
+
+  return { state, setState, setSearch };
 }

@@ -9,22 +9,24 @@ export default function TickerList(props) {
 
   if (props.stocks.stocks){
     composeTickerItems = props.stocks.stocks.map(ticker => {
-      return (
-        <TickerListItem
-        onClick={props.onClick}
-        key={ticker.symbol}
-        name={ticker.name}
-        symbol={ticker.symbol}
-        pctChange={ticker.pctchange}
-        lastSale={ticker.lastsale}
-        />
-      );
+      if ((ticker.name).toLowerCase().startsWith(props.search) || (ticker.symbol).startsWith((props.search).toUpperCase())){
+        return (
+          <TickerListItem
+          onClick={props.onClick}
+          key={ticker.symbol}
+          name={ticker.name}
+          symbol={ticker.symbol}
+          pctChange={ticker.pctchange}
+          lastSale={ticker.lastsale}
+          />
+        );
+      }
     });
   } 
 
   return (
       <section>
-        <SearchBar/>
+        <SearchBar searchState={props.searchState} search={props.search}/>
         <Slide direction="up" in={true} mountOnEnter unmountOnExit>
         <ul>{composeTickerItems}</ul>
         </Slide>

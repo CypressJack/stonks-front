@@ -2,15 +2,15 @@ import React, {useState} from "react";
 import Search from "@material-ui/icons/Search"
 import "./SearchBar.scss"
 export default function SearchBar(props) {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
   return (
     <div className="search-bar">
       <input
       className={"input"}
-      value={search}
+      value={props.search}
       placeholder={"SEARCH"}
-      onChange={(event) => setSearch(event.target.value)}
+      onChange={(event) => props.searchState(event.target.value)}
       />
       <button search className={"button"} onClick={props.onClick}><Search/></button>
     </div>
