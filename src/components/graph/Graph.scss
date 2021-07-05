@@ -1,0 +1,42 @@
+@use '../../globalStyleOverride.scss' as *;
+
+.chart-container {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.button-container {
+  width: 100%;
+  height: 15px;
+  margin-top:20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.redder {
+  background-color: $stonk-red !important;
+  color: white !important;
+}
+
+.green-unselected {
+  background-color: white !important;
+  color: $stonk-green !important;
+}
+
+.green-selected {
+  background-color: $stonk-green !important;
+  color: white !important;
+}
+
+.red-unselected {
+  background-color: white !important;
+  color: $stonk-red !important;
+}
+
+.red-selected {
+  background-color: $stonk-red !important;
+  color: white !important;
+}
