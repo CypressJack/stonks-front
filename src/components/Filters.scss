@@ -1,0 +1,31 @@
+.filter-list {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background-color: #25A55F;
+  justify-content: space-evenly;
+  white-space: nowrap; 
+}
+
+button {
+  border: none;
+  background: none;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
