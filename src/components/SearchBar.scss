@@ -1,0 +1,25 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+.input {
+  border: none;
+  margin-right: -40px;
+  height: 25px;
+  width: 90%;
+  color: #636363;
+}
+
+.button {
+  border: none;
+  background: none;
+  color: #A2A2A2;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom: 2px solid #A2A2A2;
+}
