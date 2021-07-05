@@ -18,13 +18,16 @@ const data = [
 
 storiesOf("Graph", module)
   .add("Base", () => (
-    <Graph
-    data={data}
-    />
+    <StylesProvider injectFirst>
+      <Graph
+      data={data}
+      />
+    </StylesProvider>
   ))
   .add("Range Selector", () => 
-  <StylesProvider injectFirst>
+    <StylesProvider injectFirst>
     <Button onClick={action("Button Clicked!")}>
       Base
     </Button>
-  </StylesProvider>)
+    </StylesProvider>
+    )
