@@ -1,0 +1,23 @@
+@use '../../globalStyleOverride.scss' as *;
+
+.stock-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: #636363;
+}
+
+.stock-row {
+  display: flex;
+  flex-direction: row;
+  font-size: 10pt;
+  color: $font-color-secondary;
+}
+
+.stock-column {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  width: 170px;
+}
