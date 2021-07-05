@@ -11,14 +11,14 @@ storiesOf("Nav", module)
     onClick={action("Button Clicked!")}
     />
   ))
-  .add("Pre-selected", () => (
+  .add("Selectable", () => (
     <Nav
     selected = {true}
     onClick={action("Button Clicked!")}
     />
   ))
   .add("Nav-Button", () => (
-    <Nav
+    <NavButton
     onClick={action("Button Clicked!")}
     />
     
