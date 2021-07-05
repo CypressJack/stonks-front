@@ -30,10 +30,17 @@ $box-shadow: #acacac;
 }
 /* might need to play around with space*/
 .MuiButton-tutorial {
+  display: flex;
+  position: relative;
   width: 80%;
-  justify-content: space-evenly;
+  justify-content: center;
   box-shadow: 0px 3px 4px #636363;
-} 
+}
+
+.checkmark {
+  position: absolute;
+  margin-left: 200px;
+}
 
 * {
   font-family: 'Roboto';
