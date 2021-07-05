@@ -1,25 +1,63 @@
 @use '../globalStyleOverride.scss' as *;
 
 .balance-header-container {
+  width: 100vw;
+  padding-left: 60px;
+  padding-bottom: 25px;
   color: $font-color-primary;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 15px;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .balance-header-text {
+  margin-top: 0px;
   margin-bottom: 0px;
   padding-bottom: 0px;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.balance-header-value {
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 25px;
+  font-weight: 400;
 }
 
 .balance-header-change {
+  margin-top: 0px;
+}
+
+.balance-header-value {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.balance-header-timeline {
+  margin-top: 0px;
+}
+
+.balance-dollar-change {
+  font-weight:500;
+}
+
+.balance-header-change {
+  font-size: 15px;
   border: none; 
 }
 
 .balance-header-timeline {
+  font-size: 15px;
   border: none;
+}
+.balance-header-change-container {
+  margin-top: 5px;
+
+}
+
+.red {
+  color: $stonk-red;
+}
+
+.green {
+  color: $stonk-green;
 }
