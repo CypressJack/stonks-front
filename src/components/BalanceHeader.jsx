@@ -9,13 +9,13 @@ export default function BalanceHeader(props) {
   
   if (props.startValue > props.value) {
     percentColor = 'red';
-    percentChange = `${(props.startValue / props.value) * 100}%`
+    percentChange = `${((props.startValue / props.value) * 100).toFixed(2)}%`
     difference = `↓${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.startValue - props.value)}`
   };
   
   if (props.value >= props.startValue) {
     percentColor = 'green';
-    percentChange = `${(props.value / props.startValue) * 100}%`
+    percentChange = `${((props.value / props.startValue) * 100).toFixed(2)}%`
     difference = `↑${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.value - props.startValue)}`
   };
 

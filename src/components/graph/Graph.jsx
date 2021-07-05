@@ -1,5 +1,7 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Button from "../Button";
+import MuiButton from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 import "./Graph.scss";
 import {
   ArgumentAxis,
@@ -9,6 +11,40 @@ import {
 } from '@devexpress/dx-react-chart-material-ui';
 
 export default function Graph(props) {
+
+
+  const [selected, setSelected] = useState('Month');
+  const [selectedColor, setSelectedColor] = useState('green-selected');
+  const [unSelectedColor, setUnSelectedColor] = useState('green-unselected');
+
+  const LIVE = 'Live';
+  const ONED = 'Day';
+  const ONEW = 'Week';
+  const ONEM = 'Month';
+  const ONEY = 'Year';
+  const ALL = 'All Time';
+
+  const select = function(button) {
+    setSelected(button);
+  };
+
+  const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(-1)
+    }
+  }));
+
+  const classes = useStyles();
+
+  if (props.color === '#C47777' && unSelectedColor !== 'red-unselected' && selectedColor !== 'red-selected') {
+    setUnSelectedColor('red-unselected');
+    setSelectedColor('red-selected');
+  };
+
+  if (props.color === '#25A55F' && unSelectedColor !== 'green-unselected' && selectedColor !== 'green-selected') {
+    setUnSelectedColor('green-unselected');
+    setSelectedColor('green-selected');
+  };
 
   return (
     <div className='chart-container'>
@@ -28,30 +64,27 @@ export default function Graph(props) {
       className='graph-chart'
       valueField="value"
       argumentField="argument"
-      color='#25A55F' />
+      color={props.color} />
       </Chart>
       <div className='button-container'>
-        <Button>
+        <MuiButton onClick={()=> {select(LIVE); props.setTimeLine(LIVE)}} className={`MuiButton-graph ${classes.margin} ${selected === LIVE && selectedColor || unSelectedColor}`}>
           live
-        </Button>
-        <Button>
+        </MuiButton>
+        <MuiButton onClick={()=> {select(ONED); props.setTimeLine(ONED)}} className={`MuiButton-graph ${classes.margin} ${selected === ONED && selectedColor || unSelectedColor}`}>
           1D
-        </Button>
-        <Button>
+        </MuiButton>
+        <MuiButton onClick={()=> {select(ONEW); props.setTimeLine(ONEW)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEW && selectedColor || unSelectedColor}`}>
           1W
-        </Button>
-        <Button>
+        </MuiButton>
+        <MuiButton onClick={()=> {select(ONEM); props.setTimeLine(ONEM)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEM && selectedColor || unSelectedColor}`}>
           1M
-        </Button>
-        <Button>
-          3M
-        </Button>
-        <Button>
-          1Y
-        </Button>
-        <Button>
+        </MuiButton>
+        <MuiButton onClick={()=> {select(ONEY); props.setTimeLine(ONEY)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEY && selectedColor || unSelectedColor}`}>
+          1y
+        </MuiButton>
+        <MuiButton onClick={()=> {select(ALL); props.setTimeLine(ALL)}} className={`MuiButton-graph ${classes.margin} ${selected === ALL && selectedColor || unSelectedColor}`}> 
           ALL
-        </Button>
+        </MuiButton>
       </div>
     </div>
   )
