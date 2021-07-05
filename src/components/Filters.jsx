@@ -17,16 +17,18 @@ export default function Filters(props) {
   return (
     <div className={"filter-outer"}>
       <div className={"filter-list"}>
-        <button onClick={(event) => {addHistory(event); props.onClick('') }}>Popular</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Technology')}}>Technology</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Finance')}}>Finance</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Health Care')}}>Health Care</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Capital Goods')}}>Capital Goods</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Least Volatile') }}>Least Volatile</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Most Volatile')}}>Most Volatile</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Commodities')}}>Commodities</button>
-        <button onClick={(event) => {addHistory(event); props.onClick('Stocks')}}>Stocks</button>
-        {/* <button onClick={(event) => {addHistory(event); props.onClick('Crypto')}}>Crypto</button> */}
+        {props.onNewsClick && <button onClick={(event) => {addHistory(event); props.onNewsClick()}}>Today's News</button>}
+        {props.onNewsClick && <button onClick={(event) => {addHistory(event); props.onNewsClick()}}>Your News</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('') }}>Popular</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Crypto')}}>Crypto</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Technology')}}>Technology</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Finance')}}>Finance</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Health Care')}}>Health Care</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Capital Goods')}}>Capital Goods</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Least Volatile') }}>Least Volatile</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Most Volatile')}}>Most Volatile</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Commodities')}}>Commodities</button>}
+        {props.onStockClick && <button onClick={(event) => {addHistory(event); props.onStockClick('Stocks')}}>Stocks</button>}
       </div>
     </div>
   );

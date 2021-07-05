@@ -88,6 +88,23 @@ export default function TickerList(props) {
     return common;
   }
 
+  //Set Render for Crypto
+  if((props.crypto.allcrypto && filter === "Crypto")){
+    composeTickerItems = props.crypto.allcrypto.map(ticker => {
+      if ((ticker.name).toLowerCase().startsWith(props.search) || (ticker.symbol).startsWith((props.search).toUpperCase())){
+        return (
+          <TickerListItem
+          onClick={props.onClick}
+          key={ticker.symbol}
+          name={ticker.name}
+          symbol={ticker.symbol}
+          pctChange={ticker.quote.USD.percent_change_24h}
+          lastSale={ticker.quote.USD.price}
+          />
+        );
+      }
+    });
+  }
   //Set render for common stocks
   if((props.stocks.stocks && filter === "Stocks")){
     composeTickerItems = commonStocks(props.stocks.stocks).map(ticker => {
@@ -139,7 +156,7 @@ export default function TickerList(props) {
       }
     });
   }
-
+  //Set Render for most volatile
   if((props.stocks.stocks && filter === "Most Volatile")){
     composeTickerItems = mostVol(props.stocks.stocks).map(ticker => {
       if ((ticker.name).toLowerCase().startsWith(props.search) || (ticker.symbol).startsWith((props.search).toUpperCase())){
@@ -260,8 +277,8 @@ export default function TickerList(props) {
 
   return (
       <section>
-        <SearchBar searchState={props.searchState} search={props.search}/>
-        <Filters onClick={setFilter}/>
+          <SearchBar searchState={props.searchState} search={props.search}/>
+          <Filters onStockClick={setFilter}/>
         <Slide direction="up" in={true} mountOnEnter unmountOnExit>
         <ul className="ticker-list">{composeTickerItems}</ul>
         </Slide>

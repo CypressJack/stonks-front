@@ -9,6 +9,7 @@ export default function useApiData() {
     tutorials: [],
     transactions: [],
     news: [],
+    crypto: [],
     search: ""
   });
 
@@ -29,6 +30,9 @@ export default function useApiData() {
       ),
       axios.default.get(
         '/api/all-news'
+      ),
+      axios.default.get(
+        `/api/crypto-all`
       )
     ]).then((all) => {
       setState((prev) => ({
@@ -37,7 +41,8 @@ export default function useApiData() {
         users: all[1].data,
         transactions: all[2].data,
         tutorials: all[3].data,
-        news: all[4].data
+        news: all[4].data,
+        crypto: all[5].data
       }));
     });
   }, []);
