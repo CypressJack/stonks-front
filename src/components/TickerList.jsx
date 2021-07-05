@@ -1,5 +1,6 @@
 import React from "react";
 import TickerListItem from "./TickerListItem";
+import SearchBar from "./SearchBar";
 
 export default function TickerList(props) {
 
@@ -22,6 +23,7 @@ export default function TickerList(props) {
 
   return (
       <section>
+        <SearchBar/>
         <ul>{composeTickerItems}</ul>
       </section>
   );
