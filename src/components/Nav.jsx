@@ -18,8 +18,8 @@ export default function Nav(props) {
     <nav className="nav-main">
       <NavButton account onSelect={(event) => addHistory(event)}></NavButton>
       <NavButton learn onSelect={(event) => addHistory(event)}></NavButton>
-      <NavButton search onSelect={(event) => addHistory(event)}></NavButton>
-      <NavButton onSelect={(event) => addHistory(event)}></NavButton>
+      <NavButton search onSelect={(event) => {addHistory(event); props.searchClick()}}></NavButton>
+      <NavButton onSelect={(event) => {addHistory(event); props.newsClick()}}></NavButton>
       <NavButton settings onSelect={(event) => addHistory(event)}></NavButton>
     </nav>
   );

@@ -10,7 +10,7 @@ import ListItem from "./ListItem";
   // summary
   export default function ArticleList(props) {
     let articles;
-    
+
     if (props.news){
       articles = props.news.map((article) => {
         return (

@@ -18,6 +18,6 @@ export default function Button(props) {
   );
 
   return (
-    <MuiButton className={buttonClass} onClick={props.onClick}>{props.children}{ props.completed && <IsCompleted/>}</MuiButton>
+    <MuiButton className={buttonClass} onClick={props.click}>{props.children}{ props.completed && <IsCompleted/>}</MuiButton>
   );
 }
