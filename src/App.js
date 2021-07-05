@@ -6,6 +6,7 @@ import useVisualMode from "./hooks/useVisualMode";
 import News from "./components/news/Index"
 import TickerList from "./components/TickerList";
 import Nav from "./components/Nav";
+import SearchBar from "./components/SearchBar"
 
 // import Button from "@material-ui/core/Button";
 
@@ -28,6 +29,7 @@ export default function App() {
   return (
     <StylesProvider injectFirst>
       <div className="App">
+        {(mode === 'showstocks' || mode === 'shownews') && (<SearchBar/>)}
         <div className="app-top-half">
           {mode === 'showstocks' && (<TickerList stocks={state.stocks} onClick={console.log("")}/>)}
           {mode === 'shownews' && (<News news={state.news.allnews}/>)}

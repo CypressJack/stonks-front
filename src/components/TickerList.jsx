@@ -1,5 +1,6 @@
 import React from "react";
 import TickerListItem from "./TickerListItem";
+
 export default function TickerList(props) {
 
   let composeTickerItems;
@@ -17,20 +18,7 @@ export default function TickerList(props) {
         />
       );
     });
-  } else {
-    composeTickerItems = props.stocks.map(ticker => {
-      return (
-        <TickerListItem
-        onClick={props.onClick}
-        key={ticker.symbol}
-        name={ticker.name}
-        symbol={ticker.symbol}
-        pctChange={ticker.pctchange}
-        lastSale={ticker.lastSale}
-        />
-      );
-    });
-  }
+  } 
 
   return (
       <section>
