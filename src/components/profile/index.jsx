@@ -1,14 +1,25 @@
 import * as React from 'react';
-import Profile from "../profile/index.jsx";
-import BalanceHeader from "../BalanceHeader"
+import BalanceHeader from "../BalanceHeader";
+import MyHoldingsList from "../MyHoldingsList";
+import Graph from "../graph/Graph";
 import "./Profile.scss";
 
-export default function Profile() {
+export default function Profile(props) {
 
   return (
-    <div>
-      <BalanceHeader/>
-      <Graph/>
+    <div className='profile-container'>
+      <BalanceHeader
+        name={props.name}
+        value={props.value}
+        startValue={props.startValue}
+        timeline={props.timeline}
+      />
+      <Graph
+      data={props.data}/>
+      <MyHoldingsList
+      className='profile-holdings-list'
+      stocks={props.tickerData}
+      />
     </div>
   )
 };
