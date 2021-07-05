@@ -1,0 +1,25 @@
+@use '../globalStyleOverride.scss' as *;
+
+.balance-header-container {
+  color: $font-color-primary;
+}
+
+.balance-header-text {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.balance-header-value {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.balance-header-change {
+  border: none; 
+}
+
+.balance-header-timeline {
+  border: none;
+}
