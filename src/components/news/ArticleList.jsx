@@ -21,6 +21,7 @@ import Slide from '@material-ui/core/Slide';
           headline={article.headline}
           summary={article.summary}
           dateTime={article.datetime}
+          url={article.url}
           />
           <div className='article-divider'/>
           </div>
