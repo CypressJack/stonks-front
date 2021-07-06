@@ -4,6 +4,8 @@ import MyHoldingsList from "../MyHoldingsList";
 import Graph from "../graph/Graph";
 import "./Profile.scss";
 import TrxHistoryList from "./TrxHistoryList";
+import historyData from "./dummyHistoryData.json";
+
 // positive change
 const dayData = [
   { argument: 1, value: 10000 },
@@ -54,6 +56,16 @@ const allData = [
   { argument: 8, value: 153385 },
   { argument: 9, value: 90330 },
 ];
+
+const close = '4. close';
+
+for (const day in historyData) {
+  const closingPrice = Object.values(historyData[day])[4]
+  console.log(closingPrice);
+}
+
+
+
 
 
 export default function Profile(props) {
@@ -153,6 +165,8 @@ export default function Profile(props) {
     
     return results;
   }
+
+
 
 
   return (
