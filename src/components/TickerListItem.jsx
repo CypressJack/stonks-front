@@ -28,7 +28,7 @@ export default function TickerListItem(props) {
   }
 
   return (
-    <li className="ticker-list-item" onClick={props.onClick}>
+    <li className="ticker-list-item" onClick={() => props.onClick(props.symbol)}>
       <header className="ticker-head">
         <span>{displayName}</span><span>{displayPrice}</span>
       </header>

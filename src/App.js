@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import 'devextreme/dist/css/dx.common.css';
 import 'devextreme/dist/css/dx.light.css';
 import "./App.scss";
+import axios from 'axios';
 
 //Importing API Data hooks and Visual Mode Hooks
 import useApiData from "./hooks/useApiData";
@@ -34,10 +35,29 @@ export default function App() {
   // console.log("transacts", state.transactions.transactions)
   // console.log("tutorials", state.tutorials.tutorials)
   // console.log("owned stocks", state.owned.owned)
+  
+  const func = function(symbol) {
+    let resultsObj = {};
 
-  const func = function() {
-    return
+    for (const stock of state.stocks.stocks) {
+      if (stock.symbol === symbol) {
+        resultsObj.stockData = stock;
+      }
+    }
+
+    return axios.get(`/api/ticker-prices/${symbol}`)
+      .then(data => {
+        axios.get(`/api/all-history/${symbol}`)
+        .then((historyData) => {
+          resultsObj.history = historyData.data;
+          resultsObj.prices = data.data;
+          return resultsObj;
+        })})
+      .catch((err) =>{
+        console.log(err)
+      })
   }
+  
 
   return (
     <StylesProvider injectFirst>
