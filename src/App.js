@@ -56,7 +56,6 @@ export default function App() {
             resultsObj.company = companyHistory.data.companyData;
             setState((prev) => ({...prev,singleStock: resultsObj}));
             transition('showstocks-single')
-            console.log(resultsObj)
           })
         })})
       .catch((err) =>{
@@ -74,7 +73,7 @@ export default function App() {
           {mode ==='showtutorials-individual' &&(<TutorialPage title={title} paragraph1={para1} subtitle1={sub1} paragraph2={para2}/>)}
           {mode === 'showstocks' && (<TickerList stocks={state.stocks} crypto={state.crypto} search={search} searchState={setSearch}onClick={func}/>)}
           {mode === 'shownews' && (<News news={state.news.allnews}/>)}
-          {mode === 'showstocks-single' && <Stock data={state.singleStock}/>}
+          {mode === 'showstocks-single' && <Stock data={state.singleStock} owned={state.owned.owned}/>}
         </div>
         <Nav profileClick={()=> transition('showprofile')} tutorialClick={() => transition('showtutorials')} newsClick={() => transition('shownews')} searchClick={()=> transition('showstocks')}/>
       </div>

@@ -7,6 +7,8 @@ import StockForm from './StockForm';
 
 export default function Stock(props) {
 
+  console.log(props.data)
+
   const historyData = (history) => {
     let index =1;
     const results = [];
@@ -16,6 +18,22 @@ export default function Stock(props) {
       index += 1;
     }
     return results;
+  }
+
+  const checkOwned = (ownAr) => {
+    for (let stock of ownAr) {
+      if (stock.symbol === props.data.stockData.symbol){
+        return stock.amount;
+      } 
+    }
+    return '0'
+  }
+
+  const checkRange = (low, high) => {
+    if (!low || !high){
+      return 'N/A'
+    }
+    return `$${low} - $${high}`
   }
 
   return (
@@ -35,9 +53,9 @@ export default function Stock(props) {
           open={props.data.prices.allprices.o}
           peRatio={props.data.company.PERatio}
           bid={props.data.stockData.lastsale}
-          range={`${props.data.company['52WeekLow']} - ${props.data.company['52WeekHigh']}`}
+          range={checkRange(props.data.company['52WeekLow'], props.data.company['52WeekHigh'])}
           ask={props.data.prices.allprices.c}
-          amountOwned={'N/A'}
+          amountOwned={checkOwned(props.owned)}
       />
       <StockForm/>
     </main>
