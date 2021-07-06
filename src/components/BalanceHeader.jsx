@@ -6,18 +6,29 @@ export default function BalanceHeader(props) {
   let percentColor;
   let percentChange;
   let difference;
-  
+  let differenceNum;
+
   if (props.startValue > props.value) {
+    differenceNum = props.value - props.startValue
     percentColor = 'red';
-    percentChange = `${((props.startValue / props.value) * 100).toFixed(2)}%`
-    difference = `↓${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.startValue - props.value)}`
-  };
+    percentChange = `${((differenceNum / props.startValue) * 100).toFixed(2)}%`
+    difference = `↓ ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.startValue - props.value)}`
+  }
   
   if (props.value >= props.startValue) {
+    differenceNum = props.value - props.startValue
     percentColor = 'green';
-    percentChange = `${((props.value / props.startValue) * 100).toFixed(2)}%`
-    difference = `↑${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.value - props.startValue)}`
-  };
+    percentChange = `${((differenceNum / props.startValue) * 100).toFixed(2)}%`
+    difference = `↑ ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.value - props.startValue)}`
+  }
+
+
+  console.log("start value", props.startValue);
+  console.log("value", props.value);
+  console.log("percent change", differenceNum / props.startValue * 100)
+
+
+  const profileValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.value)
 
   return (
     <div className='balance-header-container'>
@@ -25,7 +36,7 @@ export default function BalanceHeader(props) {
         {props.name}
       </p>
       <p className='balance-header-value'>
-        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.value)}
+        {profileValue}
       </p>
       <div className='balance-header-change-container'>
         <span className={`balance-dollar-change ${percentColor}`}>
