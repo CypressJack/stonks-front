@@ -31,11 +31,11 @@ export default function Stock(props) {
           name={props.data.stockData.name}
           symbol={props.data.stockData.symbol}
           marketCap={props.data.stockData.marketCap}
-          eps={'N/A'}
+          eps={props.data.company.EPS}
           open={props.data.prices.allprices.o}
-          peRatio={'N/A'}
+          peRatio={props.data.company.PERatio}
           bid={props.data.stockData.lastsale}
-          range={'N/A'}
+          range={`${props.data.company['52WeekLow']} - ${props.data.company['52WeekHigh']}`}
           ask={props.data.prices.allprices.c}
           amountOwned={'N/A'}
       />

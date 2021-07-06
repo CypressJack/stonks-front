@@ -50,10 +50,14 @@ export default function App() {
       .then(data => {
         axios.get(`/api/all-history/${symbol}`)
         .then((historyData) => {
-          resultsObj.history = historyData.data;
-          resultsObj.prices = data.data;
-          setState((prev) => ({...prev,singleStock: resultsObj}));
-          transition('showstocks-single')
+          axios.get(`/api/company-data/${symbol}`).then((companyHistory) => {
+            resultsObj.history = historyData.data;
+            resultsObj.prices = data.data;
+            resultsObj.company = companyHistory.data.companyData;
+            setState((prev) => ({...prev,singleStock: resultsObj}));
+            transition('showstocks-single')
+            console.log(resultsObj)
+          })
         })})
       .catch((err) =>{
         console.log(err)
