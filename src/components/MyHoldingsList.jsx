@@ -3,16 +3,15 @@ import MyHoldingsListItem from "./MyHoldingsListItem";
 import "./MyHoldingsList.scss"
 
 export default function MyHoldingsList(props) {
-
   const composeHoldingsList = props.stocks.map(stock => {
 
     return (
       <MyHoldingsListItem
-      key={stock.symbol}
+      key={props.stocks.indexOf(stock)}
       name={stock.name}
-      pctChange={stock.pctChange}
-      amountOwned={stock.amountOwned}
-      currentPrice={stock.c}
+      pctChange={stock.pctchange}
+      amountOwned={stock.amount}
+      currentPrice={stock.currentPrice}
       />
     );
   })

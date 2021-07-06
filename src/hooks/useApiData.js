@@ -10,6 +10,7 @@ export default function useApiData() {
     transactions: [],
     news: [],
     crypto: [],
+    owned: [],
     search: ""
   });
 
@@ -33,6 +34,9 @@ export default function useApiData() {
       ),
       axios.default.get(
         `/api/crypto-all`
+      ),
+      axios.default.get(
+        `/api/owned-stocks`
       )
     ]).then((all) => {
       setState((prev) => ({
@@ -42,7 +46,8 @@ export default function useApiData() {
         transactions: all[2].data,
         tutorials: all[3].data,
         news: all[4].data,
-        crypto: all[5].data
+        crypto: all[5].data,
+        owned: all[6].data
       }));
     });
   }, []);

@@ -3,7 +3,7 @@ import BalanceHeader from "../BalanceHeader";
 import MyHoldingsList from "../MyHoldingsList";
 import Graph from "../graph/Graph";
 import "./Profile.scss";
-
+import TrxHistoryList from "./TrxHistoryList";
 // positive change
 const dayData = [
   { argument: 1, value: 10000 },
@@ -99,6 +99,62 @@ export default function Profile(props) {
     setTimeRange(allData);
   };
 
+  const myTransactions = (mystocks, allstocks, allcrypto) => {
+    let results = [];
+    for (let stock of mystocks){
+      for (let item of allstocks){
+        if (stock.symbol === item.symbol){
+          results.push(stock)
+        }
+      }
+    }
+
+    for (let stock of mystocks){
+      for (let crypto of allcrypto){
+        if (crypto.symbol === stock.symbol){
+          results.push(stock)
+        }
+      }
+    }
+
+    return results;
+  }
+
+  const myHoldings = (mystocks, allstocks, allcrypto) => {
+    let results = [];
+
+    for (let stock of mystocks){
+      for (let item of allstocks){
+        if (stock.symbol === item.symbol){
+          let obj = {
+            name: item.name,
+            pctchange: item.pctchange,
+            currentPrice: item.lastsale,
+            amount: stock.amount
+          }
+          results.push(obj)
+        }
+      }
+    }
+
+    for (let stock of mystocks){
+      for (let crypto of allcrypto){
+        if (stock.symbol === crypto.symbol){
+          let obj = {
+            name: crypto.name,
+            pctchange: crypto.quote.USD.percent_change_24h,
+            currentPrice: crypto.quote.USD.price,
+            amount: stock.amount
+          }
+          results.push(obj)
+        }
+      }
+    }
+    
+    return results;
+  }
+
+
   return (
     <div className='profile-container'>
       <BalanceHeader
@@ -117,8 +173,12 @@ export default function Profile(props) {
       </p>
       <MyHoldingsList
       className='profile-holdings-list'
-      stocks={props.tickerData}
+      stocks={myHoldings(props.owned, props.stocks.stocks, props.crypto.allcrypto)}
       />
+      <p className='my-holdings-header'>
+        Transaction History
+      </p>
+      <TrxHistoryList stocks={myTransactions(props.transactions.transactions, props.stocks.stocks, props.crypto.allcrypto)}/>
     </div>
   )
 };

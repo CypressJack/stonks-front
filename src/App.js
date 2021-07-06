@@ -13,6 +13,7 @@ import TickerList from "./components/TickerList";
 import Nav from "./components/Nav";
 import TutorialPage from "./components/tutorials/TutorialPage";
 import TutorialsList from "./components/tutorials";
+import Profile from "./components/profile";
 
 // Override styling on any material component in this file
 import "./globalStyleOverride.scss";
@@ -26,15 +27,14 @@ const para2 = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, c
 
 export default function App() {
   const { state } = useApiData();
-  const { mode, transition} = useVisualMode('showstocks')
-  const [search, setSearch] = useState("");
+  const { mode, transition } = useVisualMode('showstocks')
+  const [ search, setSearch ] = useState("");
 
   // console.log("users", state.users.users)
-  // console.log("stocks", state.stocks.stocks)
   // console.log("transacts", state.transactions.transactions)
   // console.log("tutorials", state.tutorials.tutorials)
-  // console.log("news", state.news.allnews)
-  // console.log("crypto", state.crypto.allcrypto)
+  // console.log("owned stocks", state.owned.owned)
+
   const func = function() {
     return
   }
@@ -43,12 +43,13 @@ export default function App() {
     <StylesProvider injectFirst>
       <div className="App">
         <div className="app-top-half">
+          {mode === 'showprofile' && (<Profile transactions={state.transactions} stocks={state.stocks} crypto={state.crypto} owned={state.owned.owned}/>)}
           {mode === 'showtutorials' && (<TutorialsList onClick={()=> transition('showtutorials-individual')}/>)}
-          {mode==='showtutorials-individual' &&(<TutorialPage title={title} paragraph1={para1} subtitle1={sub1} paragraph2={para2}/>)}
+          {mode ==='showtutorials-individual' &&(<TutorialPage title={title} paragraph1={para1} subtitle1={sub1} paragraph2={para2}/>)}
           {mode === 'showstocks' && (<TickerList stocks={state.stocks} crypto={state.crypto} search={search} searchState={setSearch}onClick={func}/>)}
           {mode === 'shownews' && (<News news={state.news.allnews}/>)}
         </div>
-        <Nav tutorialClick={() => transition('showtutorials')} newsClick={() => transition('shownews')} searchClick={()=> transition('showstocks')}/>
+        <Nav profileClick={()=> transition('showprofile')} tutorialClick={() => transition('showtutorials')} newsClick={() => transition('shownews')} searchClick={()=> transition('showstocks')}/>
       </div>
     </StylesProvider>
   );
