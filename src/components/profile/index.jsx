@@ -76,15 +76,12 @@ export default function Profile(props) {
   let graphColor;
   let timeLineString;
 
-  if (timeRange[timeRange.length - 1].value >= timeRange[0].value) {
+  if (timeRange[0].value >= timeRange[timeRange.length - 1].value) {
     graphColor = '#25A55F'
   } else {
     graphColor = '#C47777'
   }
 
-  if (timeLine === 'Live') {
-    timeLineString = `${timeLine}`;
-  };
 
   if (timeLine === 'Day' && timeRange !== dayData) {
     timeLineString = `Past ${timeLine}`;
@@ -109,6 +106,30 @@ export default function Profile(props) {
   if (timeLine === 'All Time' && timeRange !== allData) {
     timeLineString = `${timeLine}`;
     setTimeRange(allData);
+  };
+
+  if (timeLine === 'Live') {
+    timeLineString = `${timeLine}`;
+  };
+
+  if (timeLine === 'Day') {
+    timeLineString = `Past ${timeLine}`;
+  };
+
+  if (timeLine === 'Week') {
+    timeLineString = `Past ${timeLine}`;
+  };
+
+  if (timeLine === 'Month') {
+    timeLineString = `Past ${timeLine}`;
+  };
+
+  if (timeLine === 'Year') {
+    timeLineString = `Past ${timeLine}`;
+  };
+
+  if (timeLine === 'All Time') {
+    timeLineString = `${timeLine}`;
   };
 
   const myTransactions = (mystocks, allstocks, allcrypto) => {
@@ -165,8 +186,6 @@ export default function Profile(props) {
     
     return results;
   }
-
-
 
 
   return (
