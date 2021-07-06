@@ -2,13 +2,17 @@
 
 .chart-container {
   width: 100%;
-  margin-top: 30px;
+  margin-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.button-container {
+.graph-button-container {
   width: 100%;
   height: 15px;
   margin-top:20px;
+  margin-right: 0px;
   display: flex;
   flex-direction: row;
   align-items: center;

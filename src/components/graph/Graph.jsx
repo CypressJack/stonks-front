@@ -8,7 +8,10 @@ import {
   ValueAxis,
   Chart,
   LineSeries,
+  Tooltip
 } from '@devexpress/dx-react-chart-material-ui';
+import { EventTracker, HoverState } from '@devexpress/dx-react-chart';
+import { Animation } from '@devexpress/dx-react-chart';
 
 export default function Graph(props) {
 
@@ -46,6 +49,12 @@ export default function Graph(props) {
     setSelectedColor('green-selected');
   };
 
+  let hoverPoint = 0;
+
+  const setHighlightedPoint = function(point) {
+    hoverPoint = point;
+  }
+
   return (
     <div className='chart-container'>
       <Chart
@@ -60,13 +69,21 @@ export default function Graph(props) {
       showLabels={false}
       showGrid={false}
       />
-      <LineSeries 
+      <LineSeries
+      name='line'
       className='graph-chart'
       valueField="value"
       argumentField="argument"
       color={props.color} />
+      <EventTracker
+      onClick={targetData => {setHighlightedPoint(targetData.targets[0].point)}}
+      onPointerMove={(targetData => console.log(targetData.targets[0].point))}
+      />
+      <Tooltip
+      targetItem={{series: "line", point: hoverPoint}}
+      />
       </Chart>
-      <div className='button-container'>
+      <div className='graph-button-container'>
         <MuiButton onClick={()=> {select(LIVE); props.setTimeLine(LIVE)}} className={`MuiButton-graph ${classes.margin} ${selected === LIVE && selectedColor || unSelectedColor}`}>
           live
         </MuiButton>
