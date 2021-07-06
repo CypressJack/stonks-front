@@ -15,6 +15,7 @@ import Nav from "./components/Nav";
 import TutorialPage from "./components/tutorials/TutorialPage";
 import TutorialsList from "./components/tutorials";
 import Profile from "./components/profile";
+import Stock from './components/stock';
 
 // Override styling on any material component in this file
 import "./globalStyleOverride.scss";
@@ -27,7 +28,7 @@ const sub1 = "But How?"
 const para2 = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis, cupiditate quam inventore provident voluptas expedita sequi, tempore ipsam consectetur incidunt animi vel! Maxime quasi sed dicta beatae, eos quas officiis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae nemo facilis voluptatibus reiciendis amet. Reiciendis, quia laboriosam provident natus nihil repellat aliquid nesciunt sint cupiditate doloremque rem esse nemo quaerat. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur et veniam obcaecati dignissimos beatae a libero in vitae fuga, sunt exercitationem nemo excepturi perspiciatis ea unde, voluptas adipisci. Inventore, autem."
 
 export default function App() {
-  const { state } = useApiData();
+  const { state, setState } = useApiData();
   const { mode, transition } = useVisualMode('showstocks')
   const [ search, setSearch ] = useState("");
 
@@ -35,7 +36,7 @@ export default function App() {
   // console.log("transacts", state.transactions.transactions)
   // console.log("tutorials", state.tutorials.tutorials)
   // console.log("owned stocks", state.owned.owned)
-  
+
   const func = function(symbol) {
     let resultsObj = {};
 
@@ -51,7 +52,8 @@ export default function App() {
         .then((historyData) => {
           resultsObj.history = historyData.data;
           resultsObj.prices = data.data;
-          return resultsObj;
+          setState((prev) => ({...prev,singleStock: resultsObj}));
+          transition('showstocks-single')
         })})
       .catch((err) =>{
         console.log(err)
@@ -68,6 +70,7 @@ export default function App() {
           {mode ==='showtutorials-individual' &&(<TutorialPage title={title} paragraph1={para1} subtitle1={sub1} paragraph2={para2}/>)}
           {mode === 'showstocks' && (<TickerList stocks={state.stocks} crypto={state.crypto} search={search} searchState={setSearch}onClick={func}/>)}
           {mode === 'shownews' && (<News news={state.news.allnews}/>)}
+          {mode === 'showstocks-single' && <Stock data={state.singleStock}/>}
         </div>
         <Nav profileClick={()=> transition('showprofile')} tutorialClick={() => transition('showtutorials')} newsClick={() => transition('shownews')} searchClick={()=> transition('showstocks')}/>
       </div>

@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 import Button from "../Button";
 import "./StockForm.scss";
+import TextField from "@material-ui/core/TextField";
 
 export default function StockForm(props) {
   const [amount, setAmount] = useState("");
 
   return (
     <form className={"stock-form"}>
-      <input
+      <TextField
       className={"amount-input"}
-      placeholder={"Enter amount to buy or sell."}
+      label={"Enter amount to buy or sell."}
       value={amount}
       onChange={event => setAmount(event.target.value)}
+      variant={'outlined'}
       />
       <div className={"button-container"}>
         <span className={"button"} onClick={props.onClick}><Button>Buy</Button></span>

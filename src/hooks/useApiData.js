@@ -53,7 +53,7 @@ export default function useApiData() {
   }, []);
 
   const setSearch = (string) => {
-    setState((prev)=> ({...prev,day: string}))
+    setState((prev)=> ({...prev,search: string}))
   }
 
   return { state, setState, setSearch };
