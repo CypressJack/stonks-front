@@ -1,17 +1,15 @@
 @use '../../globalStyleOverride.scss' as *;
 
 .profile-container {
-  width: 90vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: $font-color-primary;
-  background-color: red;
 }
 
 .my-holdings-header {
   margin: 0px;
   padding: 0px;
   margin-top: 30px;
-  background-color: blue;
 }
