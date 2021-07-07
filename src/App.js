@@ -31,7 +31,7 @@ const para2 =
 
 export default function App() {
   const { state, setState } = useApiData();
-  const { mode, transition } = useVisualMode("showstocks");
+  const { mode, transition, tutBack } = useVisualMode("showstocks");
   const [search, setSearch] = useState("");
 
   // console.log("users", state.users.users)
@@ -100,6 +100,7 @@ export default function App() {
               paragraph1={para1}
               subtitle1={sub1}
               paragraph2={para2}
+              onClick={()=> tutBack() }
             />
           )}
           {mode === "showstocks" && (
