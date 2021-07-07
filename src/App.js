@@ -32,7 +32,7 @@ const para2 =
 
 export default function App() {
   const { state, setState } = useApiData();
-  const { mode, transition, tutBack } = useVisualMode("loading");
+  const { mode, transition, tutBack } = useVisualMode("showstocks");
   const [search, setSearch] = useState("");
 
   // console.log("users", state.users.users)
