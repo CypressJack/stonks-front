@@ -9,23 +9,41 @@ import axios from 'axios';
 import useApiData from "../../hooks/useApiData";
 
 export default function Stock(props) {
-  const { state, setState } = useApiData();
 
-  const historyData = (history) => {
+  console.log("props.data", props.data)
+
+
+  const { state, setState } = useApiData();
+  
+  const createGraphData = (history) => {
     let index = Object.keys(history).length;
     const results = [];
     for (const item in history) {
       const closingPrice = Object.values(history[item])[4]
       results.unshift({argument: index, value: parseFloat(closingPrice)})
       index -= 1;
-    }
+    };
     return results;
-  }
-  const allData = historyData(props.data.history);
-  const monthData = allData.slice(-5);
+  };
+
+  const createDayData = (history) => {
+    let index = Object.keys(history).length;
+    const results = [];
+    for (const item in history) {
+      const closingPrice = Object.values(history[item])[3]
+      results.unshift({argument: index, value: parseFloat(closingPrice)})
+      index -= 1;
+    };
+    return results;
+  };
+
+
+
+  const allData = createGraphData(props.data.history);
+  const monthData = createGraphData(props.data.month)
   const yearData = allData.slice(-52);
-  const weekData = allData.slice(-2);
-  const dayData = allData.slice(-2);
+  const weekData = monthData.slice(-7);
+  const dayData = createDayData(props.data.day);
   const liveData = allData.slice(-2);
   
   const [selectedData, setSelectedData] = useState(allData);
