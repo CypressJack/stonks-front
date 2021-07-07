@@ -72,8 +72,6 @@ export default function useApiData() {
         owned: all[6].data,
         yourNews: yourNews(all[6].data)
       }));
-    }).then(() => {
-      
     })
   }, []);
 

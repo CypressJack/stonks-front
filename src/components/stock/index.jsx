@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 //import components
 import BalanceHeader from '../BalanceHeader';
 import Graph from '../graph/Graph';
 import StockSummary from './StockSummary';
 import StockForm from './StockForm';
 
+import axios from 'axios';
+import useApiData from "../../hooks/useApiData";
+
 export default function Stock(props) {
+  const { state, setState } = useApiData();
 
   const historyData = (history) => {
     let index = Object.keys(history).length;
@@ -76,10 +80,12 @@ export default function Stock(props) {
 
 
   const checkOwned = (ownAr) => {
-    for (let stock of ownAr) {
-      if (stock.symbol === props.data.stockData.symbol){
-        return stock.amount;
-      } 
+    if (ownAr){
+      for (let stock of ownAr) {
+        if (stock.symbol === props.data.stockData.symbol){
+          return stock.amount;
+        } 
+      }
     }
     return '0'
   }
@@ -89,6 +95,69 @@ export default function Stock(props) {
       return 'N/A'
     }
     return `$${low} - $${high}`
+  }
+
+  const buyStock = (amount, cost) => {
+    let mounted = true;
+    axios.post('/api/buy-stock', {
+      cost,
+      amount,
+      symbol: `${props.data.stockData.symbol}`,
+      type: true,
+      user_id: 1
+    })
+    .then((data)=>{
+      Promise.all([
+        axios.default.get(`
+        /api/users`),
+        axios.default.get(`
+        /api/transactions`),
+        axios.default.get(`
+        /api/owned-stocks`)
+      ]).then((all) => {
+        if (mounted){
+          let oldstate = {...state}
+          oldstate.users = all[0].data
+          oldstate.transactions = all[1].data
+          oldstate.owned = all[2].data
+          setState(oldstate)
+        }
+        return () => mounted = false;
+      })
+    })
+  }
+
+  const sellStock = (amount, cost) => {
+    let mounted = true;
+    axios.get('/api/owned-stocks').then(data => {
+      data.data.owned.map((owned) => { if(owned.symbol === props.data.stockData.symbol){
+        axios.post('/api/sell-stock', {
+          cost,
+          amount,
+          symbol: props.data.stockData.symbol,
+          type: false,
+          user_id: 1
+        }).then((data) => {
+          Promise.all([
+            axios.default.get(`
+            /api/users`),
+            axios.default.get(`
+            /api/transactions`),
+            axios.default.get(`
+            /api/owned-stocks`)
+          ]).then((all) => {
+            if (mounted){
+              let oldstate = {...state}
+              oldstate.users = all[0].data
+              oldstate.transactions = all[1].data
+              oldstate.owned = all[2].data
+              setState(oldstate)
+            }
+            return () => mounted = false;
+          })
+        })
+      }})
+    })
   }
 
   return (
@@ -116,11 +185,13 @@ export default function Stock(props) {
           bid={props.data.stockData.lastsale}
           range={checkRange(props.data.company['52WeekLow'], props.data.company['52WeekHigh'])}
           ask={props.data.prices.allprices.c}
-          amountOwned={checkOwned(props.owned)}
+          amountOwned={checkOwned(state.owned.owned)}
       />
       <StockForm
       currentPrice={props.data.prices.allprices.c}
       symbol={props.data.stockData.symbol}
+      sell={sellStock}
+      buy={buyStock}
       />
     </main>
   );
