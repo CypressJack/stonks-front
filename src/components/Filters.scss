@@ -15,9 +15,11 @@
 
 .filter-outer {
   display:flex;
-  width: 375px;
+  width: 355px;
   margin-top: -50px;
   position: fixed;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 .filter-button {
