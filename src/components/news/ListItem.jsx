@@ -22,7 +22,7 @@ export default function ListItem(props) {
           {props.headline}
         </h4>
         <h5 className='list-item-date'>
-          {date.toString().slice(0, 15)}
+          {date.toString().slice(0, 11)}
         </h5>
       </div>
     </div>

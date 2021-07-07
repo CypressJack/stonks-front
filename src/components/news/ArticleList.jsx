@@ -41,7 +41,7 @@ import Filters from "../Filters";
             img={individualArticle.image_url}
             headline={individualArticle.title}
             summary={individualArticle.description}
-            dateTime={individualArticle.published_utc}
+            dateTime={Date.parse(individualArticle.published_utc)}
             url={individualArticle.article_url}
             />
             <div className='article-divider'/>
