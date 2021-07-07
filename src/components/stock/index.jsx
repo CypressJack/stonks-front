@@ -21,8 +21,10 @@ export default function Stock(props) {
   const monthData = allData.slice(-5);
   const yearData = allData.slice(-52);
   const weekData = allData.slice(-2);
+  const dayData = allData.slice(-2);
+  const liveData = allData.slice(-2);
   
-  const [selectedData, setSelectedData] = useState(monthData);
+  const [selectedData, setSelectedData] = useState(allData);
   const [timeLine, setTimeLine] = useState('Month');
   
 
@@ -101,11 +103,12 @@ export default function Stock(props) {
         profile={false}
         stockPrice={props.data.stockData.lastsale}
       />
-      <Graph 
-        data={selectedData}
-        color={graphColor}
-        setTimeLine={setTimeLine}
-            />
+      {timeLine === 'Live' && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} />}
+      {timeLine === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} />}
+      {timeLine === 'Month' && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} />}
+      {timeLine === 'Week' && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} />}
+      {timeLine === 'Year' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} />}
+      {timeLine === 'All Time' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'All Time'} />}
       <StockSummary
           name={props.data.stockData.name}
           symbol={props.data.stockData.symbol}

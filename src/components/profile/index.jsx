@@ -59,42 +59,42 @@ const allData = [
 
 export default function Profile(props) {
 
-  const [timeRange, setTimeRange] = useState(monthData)
+  const [selectedData, setSelectedData] = useState(monthData)
   const [timeLine, setTimeLine] = useState('Month')
 
   let graphColor;
   let timeLineString;
 
-  if (timeRange[0].value >= timeRange[timeRange.length - 1].value) {
+  if (selectedData[selectedData.length - 1].value >= selectedData[0].value) {
     graphColor = '#25A55F'
   } else {
     graphColor = '#C47777'
   }
 
 
-  if (timeLine === 'Day' && timeRange !== dayData) {
+  if (timeLine === 'Day' && selectedData !== dayData) {
     timeLineString = `Past ${timeLine}`;
-    setTimeRange(dayData);
+    setSelectedData(dayData);
   };
 
-  if (timeLine === 'Week' && timeRange !== weekData) {
+  if (timeLine === 'Week' && selectedData !== weekData) {
     timeLineString = `Past ${timeLine}`;
-    setTimeRange(weekData);
+    setSelectedData(weekData);
   };
 
-  if (timeLine === 'Month' && timeRange !== monthData) {
+  if (timeLine === 'Month' && selectedData !== monthData) {
     timeLineString = `Past ${timeLine}`;
-    setTimeRange(monthData);
+    setSelectedData(monthData);
   };
 
-  if (timeLine === 'Year' && timeRange !== yearData) {
+  if (timeLine === 'Year' && selectedData !== yearData) {
     timeLineString = `Past ${timeLine}`;
-    setTimeRange(yearData);
+    setSelectedData(yearData);
   };
 
-  if (timeLine === 'All Time' && timeRange !== allData) {
+  if (timeLine === 'All Time' && selectedData !== allData) {
     timeLineString = `${timeLine}`;
-    setTimeRange(allData);
+    setSelectedData(allData);
   };
 
   if (timeLine === 'Live') {
@@ -180,12 +180,12 @@ export default function Profile(props) {
     <div className='profile-container'>
       <BalanceHeader
         name={'My Profile'}
-        value={timeRange[timeRange.length - 1].value}
-        startValue={timeRange[0].value}
+        value={selectedData[selectedData.length - 1].value}
+        startValue={selectedData[0].value}
         timeline={timeLineString}
       />
       <Graph
-      data={timeRange}
+      data={selectedData}
       color={graphColor}
       setTimeLine={setTimeLine}
       />

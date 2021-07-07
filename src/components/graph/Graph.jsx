@@ -71,6 +71,7 @@ export default function Graph(props) {
       valueField="value"
       argumentField="argument"
       color={props.color} />
+      <Animation/>
       <EventTracker
       onClick={targetData => {setSelectedPoint(targetData.targets[0] ? {series: 'line', point: targetData.targets[0].point} : false)}}
       />
