@@ -16,7 +16,7 @@ import { Animation } from '@devexpress/dx-react-chart';
 export default function Graph(props) {
 
 
-  const [selected, setSelected] = useState('Month');
+  const [selected, setSelected] = useState(props.selected ? props.selected : 'Month');
   const [selectedColor, setSelectedColor] = useState('green-selected');
   const [unSelectedColor, setUnSelectedColor] = useState('green-unselected');
   const [selectedPoint, setSelectedPoint] = useState(false);
@@ -27,10 +27,6 @@ export default function Graph(props) {
   const ONEM = 'Month';
   const ONEY = 'Year';
   const ALL = 'All Time';
-
-  const select = function(button) {
-    setSelected(button);
-  };
 
   const useStyles = makeStyles((theme) => ({
     margin: {
@@ -71,6 +67,7 @@ export default function Graph(props) {
       valueField="value"
       argumentField="argument"
       color={props.color} />
+      <Animation/>
       <EventTracker
       onClick={targetData => {setSelectedPoint(targetData.targets[0] ? {series: 'line', point: targetData.targets[0].point} : false)}}
       />
@@ -79,22 +76,22 @@ export default function Graph(props) {
       />
       </Chart>
       <div className='graph-button-container'>
-        <MuiButton onClick={()=> {select(LIVE); props.setTimeLine(LIVE); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === LIVE && selectedColor || unSelectedColor}`}>
+        <MuiButton onClick={()=> {setSelected(LIVE); props.setTimeLine(LIVE); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === LIVE ?  selectedColor : unSelectedColor}`}>
           live
         </MuiButton>
-        <MuiButton onClick={()=> {select(ONED); props.setTimeLine(ONED); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONED && selectedColor || unSelectedColor}`}>
+        <MuiButton onClick={()=> {setSelected(ONED); props.setTimeLine(ONED); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONED ?  selectedColor : unSelectedColor}`}>
           1D
         </MuiButton>
-        <MuiButton onClick={()=> {select(ONEW); props.setTimeLine(ONEW); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEW && selectedColor || unSelectedColor}`}>
+        <MuiButton onClick={()=> {setSelected(ONEW); props.setTimeLine(ONEW); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEW ?  selectedColor : unSelectedColor}`}>
           1W
         </MuiButton>
-        <MuiButton onClick={()=> {select(ONEM); props.setTimeLine(ONEM); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEM && selectedColor || unSelectedColor}`}>
+        <MuiButton onClick={()=> {setSelected(ONEM); props.setTimeLine(ONEM); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEM ?  selectedColor : unSelectedColor}`}>
           1M
         </MuiButton>
-        <MuiButton onClick={()=> {select(ONEY); props.setTimeLine(ONEY); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEY && selectedColor || unSelectedColor}`}>
+        <MuiButton onClick={()=> {setSelected(ONEY); props.setTimeLine(ONEY); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ONEY ?  selectedColor : unSelectedColor}`}>
           1y
         </MuiButton>
-        <MuiButton onClick={()=> {select(ALL); props.setTimeLine(ALL); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ALL && selectedColor || unSelectedColor}`}> 
+        <MuiButton onClick={()=> {setSelected(ALL); props.setTimeLine(ALL); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === ALL ?  selectedColor : unSelectedColor}`}> 
           ALL
         </MuiButton>
       </div>
