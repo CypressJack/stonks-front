@@ -21,12 +21,8 @@ export default function NavButton(props) {
   } else {
     type = <ArtTrackRounded/>
   }
-  const buttonClass = classNames(
-    "nav-button",
-    {"--selected": props.selected}
-  )
 
   return (
-    <button className={buttonClass} onClick={props.onSelect}>{type}</button>
+    <button className={props.className} onClick={props.onSelect}>{type}</button>
   );
 }
