@@ -61,7 +61,6 @@ const close = '4. close';
 
 for (const day in historyData) {
   const closingPrice = Object.values(historyData[day])[4]
-  console.log(closingPrice);
 }
 
 

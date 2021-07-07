@@ -63,7 +63,6 @@ export default function App() {
       })
   }
   
-
   return (
     <StylesProvider injectFirst>
       <div className="App">
@@ -72,7 +71,7 @@ export default function App() {
           {mode === 'showtutorials' && (<TutorialsList onClick={()=> transition('showtutorials-individual')}/>)}
           {mode ==='showtutorials-individual' &&(<TutorialPage title={title} paragraph1={para1} subtitle1={sub1} paragraph2={para2}/>)}
           {mode === 'showstocks' && (<TickerList stocks={state.stocks} crypto={state.crypto} search={search} searchState={setSearch}onClick={func}/>)}
-          {mode === 'shownews' && (<News news={state.news.allnews}/>)}
+          {mode === 'shownews' && (<News news={state.news.allnews} yourNews={state.yourNews}/>)}
           {mode === 'showstocks-single' && <Stock data={state.singleStock} owned={state.owned.owned}/>}
         </div>
         <Nav profileClick={()=> transition('showprofile')} tutorialClick={() => transition('showtutorials')} newsClick={() => transition('shownews')} searchClick={()=> transition('showstocks')}/>

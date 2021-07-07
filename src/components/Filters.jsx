@@ -35,8 +35,8 @@ export default function Filters(props) {
   return (
     <div className={"filter-outer"}>
       <div className={"filter-list"}>
-        {props.onNewsClick && <button onClick={(event) => {select(TONE); props.onNewsClick()}} className={`filter-button ${selected === TONE ? selectedColor : unSelectedColor}`}>{TONE}</button>}
-        {props.onNewsClick && <button onClick={(event) => {select(YONE); props.onNewsClick()}} className={`filter-button ${selected === YONE ? selectedColor : unSelectedColor}`}>{YONE}</button>}
+        {props.onNewsClick && <button onClick={(event) => {select(TONE); props.onNewsClick("All")}} className={`filter-button ${selected === TONE ? selectedColor : unSelectedColor}`}>{TONE}</button>}
+        {props.onNewsClick && <button onClick={(event) => {select(YONE); props.onNewsClick("Your News")}} className={`filter-button ${selected === YONE ? selectedColor : unSelectedColor}`}>{YONE}</button>}
         {props.onStockClick && <button onClick={(event) => {select(POP); props.onStockClick('') }} className={`filter-button ${selected === POP ? selectedColor : unSelectedColor}`}>{POP}</button>}
         {props.onStockClick && <button onClick={(event) => {select(CRYPTO); props.onStockClick('Crypto')}} className={`filter-button ${selected === CRYPTO ? selectedColor : unSelectedColor}`}>{CRYPTO}</button>}
         {props.onStockClick && <button onClick={(event) => {select(TECH); props.onStockClick('Technology')}} className={`filter-button ${selected === TECH ? selectedColor : unSelectedColor}`}>{TECH}</button>}

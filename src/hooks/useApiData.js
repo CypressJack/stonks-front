@@ -16,6 +16,28 @@ export default function useApiData() {
 
   //Initial Axios Call to API// All Tokens are hard coded for now
   useEffect(() => {
+
+    const findNews = (ticker) => {
+      return axios.get(`/api/single-news/${ticker}`).then((data) => {
+        return data.data.results;
+      })
+    }
+
+    const yourNews = async function (ownedTickers) {
+      let yourArticles = [];
+      for (const ticker of ownedTickers.owned) {
+        const data = await findNews(ticker.symbol);
+        if (data.length > 0){
+          yourArticles.push(data)
+        }
+      }
+      
+      setState((prev) => ({
+        ...prev,
+        yourNews: yourArticles
+      }))
+    };
+
     Promise.all([
       axios.default.get(
         `/api/all-stocks`
@@ -47,9 +69,12 @@ export default function useApiData() {
         tutorials: all[3].data,
         news: all[4].data,
         crypto: all[5].data,
-        owned: all[6].data
+        owned: all[6].data,
+        yourNews: yourNews(all[6].data)
       }));
-    });
+    }).then(() => {
+      
+    })
   }, []);
 
   const setSearch = (string) => {
