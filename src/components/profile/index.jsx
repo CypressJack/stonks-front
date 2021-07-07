@@ -4,6 +4,7 @@ import MyHoldingsList from "../MyHoldingsList";
 import Graph from "../graph/Graph";
 import "./Profile.scss";
 import TrxHistoryList from "./TrxHistoryList";
+import Slide from '@material-ui/core/Slide';
 
 // positive change
 const dayData = [
@@ -171,11 +172,11 @@ export default function Profile(props) {
         }
       }
     }
-    
     return results;
   }
 
   return (
+    <Slide direction="up" in={true} mountOnEnter unmountOnExit>
     <div className='profile-container'>
       <BalanceHeader
         name={'My Profile'}
@@ -200,5 +201,6 @@ export default function Profile(props) {
       </p>
       <TrxHistoryList stocks={myTransactions(props.transactions.transactions, props.stocks.stocks, props.crypto.allcrypto)}/>
     </div>
+    </Slide>
   )
 };

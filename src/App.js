@@ -16,6 +16,7 @@ import TutorialPage from "./components/tutorials/TutorialPage";
 import TutorialsList from "./components/tutorials";
 import Profile from "./components/profile";
 import Stock from "./components/stock";
+import Loading from "./components/loading/Loading";
 
 // Override styling on any material component in this file
 import "./globalStyleOverride.scss";
@@ -31,7 +32,7 @@ const para2 =
 
 export default function App() {
   const { state, setState } = useApiData();
-  const { mode, transition, tutBack } = useVisualMode("showstocks");
+  const { mode, transition, tutBack } = useVisualMode("loading");
   const [search, setSearch] = useState("");
 
   // console.log("users", state.users.users)
@@ -41,6 +42,7 @@ export default function App() {
 
   const func = function (symbol) {
     let resultsObj = {};
+    transition('loading')
 
     for (const stock of state.stocks.stocks) {
       if (stock.symbol === symbol) {
@@ -81,6 +83,9 @@ export default function App() {
     <StylesProvider injectFirst>
       <div className="App">
         <div className="app-top-half">
+          {mode === "loading" && (
+            <Loading/>
+          )}
           {mode === "showprofile" && (
             <Profile
               transactions={state.transactions}
