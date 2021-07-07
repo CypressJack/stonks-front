@@ -8,7 +8,7 @@ export default function TutorialsList(props) {
   return (
     <Slide direction="up" in={true} mountOnEnter unmountOnExit>
     <main className={"tutorials-body"}>
-      <header>Tutorials.</header>
+      <header className={'tutorials-title'}><b>Tutorials</b></header>
       <Button tutorial onClick={props.onClick} completed={true}>1. Common Terms</Button>
       <Button tutorial onClick={props.onClick} completed={true}>2. Stocks and Tickers</Button>
       <Button tutorial onClick={props.onClick} completed={true}>3. Account Types</Button>

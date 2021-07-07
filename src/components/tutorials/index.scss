@@ -1,9 +1,13 @@
 .tutorials-body {
-  height: 600px;
+  height: 750px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   color: #636363;
   font-size: 20pt;
+}
+
+.tutorials-title {
+  text-decoration: underline;
 }
