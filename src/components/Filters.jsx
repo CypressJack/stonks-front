@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import "./Filters.scss";
 export default function Filters(props) {
 
-  const [selected, setSelected] = useState('Popular');
+  const [selected, setSelected] = useState((props.onStockClick && 'Popular') || (props.onNewsClick && "Today's News"));
   const [selectedColor] = useState('--selected-filter');
   const [unSelectedColor] = useState('--unselected-filter');
   // const [currentSelection, setSelection] = useState(props.selection || null);
