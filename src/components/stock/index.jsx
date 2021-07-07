@@ -7,7 +7,6 @@ import StockForm from './StockForm';
 
 export default function Stock(props) {
 
-  
   const historyData = (history) => {
     let index = Object.keys(history).length;
     const results = [];
@@ -22,8 +21,6 @@ export default function Stock(props) {
   const monthData = allData.slice(-5);
   const yearData = allData.slice(-52);
   const weekData = allData.slice(-2);
-  console.log("raw data", props.data.history)
-  console.log("conditioned data", allData)
   
   const [selectedData, setSelectedData] = useState(monthData);
   const [timeLine, setTimeLine] = useState('Month');
@@ -78,6 +75,22 @@ export default function Stock(props) {
   };
 
 
+  const checkOwned = (ownAr) => {
+    for (let stock of ownAr) {
+      if (stock.symbol === props.data.stockData.symbol){
+        return stock.amount;
+      } 
+    }
+    return '0'
+  }
+
+  const checkRange = (low, high) => {
+    if (!low || !high){
+      return 'N/A'
+    }
+    return `$${low} - $${high}`
+  }
+
   return (
     <main>
       <BalanceHeader
@@ -94,18 +107,21 @@ export default function Stock(props) {
         setTimeLine={setTimeLine}
             />
       <StockSummary
-        name={props.data.stockData.name}
-        symbol={props.data.stockData.symbol}
-        marketCap={props.data.stockData.marketCap}
-        eps={'N/A'}
-        open={props.data.prices.allprices.o}
-        peRatio={'N/A'}
-        bid={props.data.stockData.lastsale}
-        range={'N/A'}
-        ask={props.data.prices.allprices.c}
-        amountOwned={'N/A'}
+          name={props.data.stockData.name}
+          symbol={props.data.stockData.symbol}
+          marketCap={props.data.stockData.marketCap}
+          eps={props.data.company.EPS}
+          open={props.data.prices.allprices.o}
+          peRatio={props.data.company.PERatio}
+          bid={props.data.stockData.lastsale}
+          range={checkRange(props.data.company['52WeekLow'], props.data.company['52WeekHigh'])}
+          ask={props.data.prices.allprices.c}
+          amountOwned={checkOwned(props.owned)}
       />
-      <StockForm/>
+      <StockForm
+      currentPrice={props.data.prices.allprices.c}
+      symbol={props.data.stockData.symbol}
+      />
     </main>
   );
 }

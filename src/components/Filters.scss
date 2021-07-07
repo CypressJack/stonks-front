@@ -2,7 +2,7 @@
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
-  background-color: #25A55F;
+  background-color: white;
   white-space: nowrap;
   height: 45px;
   width: 100%;
@@ -19,14 +19,24 @@
   position: fixed;
 }
 
-button {
+.filter-button {
   border: none;
   background: none;
   color: #414141;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-right: 5px;
+  height: 75%;
 }
 
 .--selected-filter {
  color: white;
+ background-color: #25A55F;
+}
+
+.--unselected-filter {
+  color: #25A55F;
+  background-color: white;
 }
 
 .filter-list::-webkit-scrollbar {

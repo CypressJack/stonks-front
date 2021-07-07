@@ -23,11 +23,6 @@ export default function BalanceHeader(props) {
   }
 
 
-  console.log("start value", props.startValue);
-  console.log("value", props.value);
-  console.log("percent change", differenceNum / props.startValue * 100)
-
-
   const profileValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.value)
 
   return (

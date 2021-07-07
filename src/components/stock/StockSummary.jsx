@@ -5,6 +5,13 @@ export default function StockSummary(props) {
 
   const formattedCap = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format( [props.marketCap] )
 
+  const undef = (value) => {
+    if (!value){
+      return 'N/A'
+    }
+    return `$${value}`;
+  }
+  
   return (
     <article className={"stock-summary"}>
       <header className={"stock-title"}>Summary</header>
@@ -16,8 +23,8 @@ export default function StockSummary(props) {
           <span className={"stock-item"}><b>Ask: </b>{`$${props.ask.toFixed(2)}`}</span>
         </div>
         <div className={"stock-column"}>
-          <span className={"stock-item"}><b>EPS: </b>{props.eps}</span>
-          <span className={"stock-item"}><b>PE ratio: </b>{props.peRatio}</span>
+          <span className={"stock-item"}><b>EPS: </b>{undef(props.eps)}</span>
+          <span className={"stock-item"}><b>PE ratio: </b>{undef(props.peRatio)}</span>
           <span className={"stock-item"}><b>52 Week Range: </b>{props.range}</span>
           <span className={"stock-item"}><b>Amount Owned: </b>{props.amountOwned}</span>
         </div>

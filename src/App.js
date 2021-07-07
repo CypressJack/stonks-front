@@ -50,17 +50,19 @@ export default function App() {
       .then(data => {
         axios.get(`/api/all-history/${symbol}`)
         .then((historyData) => {
-          resultsObj.history = historyData.data;
-          resultsObj.prices = data.data;
-          setState((prev) => ({...prev,singleStock: resultsObj}));
-          transition('showstocks-single')
+          axios.get(`/api/company-data/${symbol}`).then((companyHistory) => {
+            resultsObj.history = historyData.data;
+            resultsObj.prices = data.data;
+            resultsObj.company = companyHistory.data.companyData;
+            setState((prev) => ({...prev,singleStock: resultsObj}));
+            transition('showstocks-single')
+          })
         })})
       .catch((err) =>{
         console.log(err)
       })
   }
   
-
   return (
     <StylesProvider injectFirst>
       <div className="App">
@@ -69,8 +71,8 @@ export default function App() {
           {mode === 'showtutorials' && (<TutorialsList onClick={()=> transition('showtutorials-individual')}/>)}
           {mode ==='showtutorials-individual' &&(<TutorialPage title={title} paragraph1={para1} subtitle1={sub1} paragraph2={para2}/>)}
           {mode === 'showstocks' && (<TickerList stocks={state.stocks} crypto={state.crypto} search={search} searchState={setSearch}onClick={func}/>)}
-          {mode === 'shownews' && (<News news={state.news.allnews}/>)}
-          {mode === 'showstocks-single' && <Stock data={state.singleStock}/>}
+          {mode === 'shownews' && (<News news={state.news.allnews} yourNews={state.yourNews}/>)}
+          {mode === 'showstocks-single' && <Stock data={state.singleStock} owned={state.owned.owned}/>}
         </div>
         <Nav profileClick={()=> transition('showprofile')} tutorialClick={() => transition('showtutorials')} newsClick={() => transition('shownews')} searchClick={()=> transition('showstocks')}/>
       </div>

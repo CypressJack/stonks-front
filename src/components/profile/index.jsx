@@ -57,17 +57,6 @@ const allData = [
   { argument: 9, value: 90330 },
 ];
 
-const close = '4. close';
-
-for (const day in historyData) {
-  const closingPrice = Object.values(historyData[day])[4]
-  console.log(closingPrice);
-}
-
-
-
-
-
 export default function Profile(props) {
 
   const [timeRange, setTimeRange] = useState(monthData)
@@ -186,7 +175,6 @@ export default function Profile(props) {
     
     return results;
   }
-
 
   return (
     <div className='profile-container'>
