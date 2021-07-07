@@ -16,7 +16,7 @@ export default function TutorialPage(props) {
       {props.subtitle2 && <header className={"subtitle"}><b>{props.subtitle2}</b></header>}
       {props.paragraph3 && <p className={"tutorial-paragraphs"}>{props.paragraph3}</p>}
       <div className={"back-button-container"}>
-      <Button back onClick={back()}>Back</Button>
+      <Button back onClick={back}>Back</Button>
       </div>
     </main>
     </Slide>
