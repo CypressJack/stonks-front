@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Button from "../Button";
 import "./StockForm.scss";
 import TextField from "@material-ui/core/TextField";

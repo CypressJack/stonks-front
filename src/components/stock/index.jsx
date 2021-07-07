@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 //import components
 import BalanceHeader from '../BalanceHeader';
 import Graph from '../graph/Graph';
@@ -156,9 +156,9 @@ export default function Stock(props) {
             return () => mounted = false;
           })
         })
-      }})
-    })
-  }
+      }
+    return true;
+  })})}
 
   return (
     <main>

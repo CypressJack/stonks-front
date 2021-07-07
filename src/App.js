@@ -62,6 +62,17 @@ export default function App() {
         console.log(err)
       })
   }
+
+
+  //Get Request example for 30 days;
+  axios.get(`/api/30-history/IBM`).then((data) => {
+    console.log("30 days", data.data);
+  })
+
+  //Get Request example for one day;
+  axios.get(`/api/oneday-history/IBM`).then((data) => {
+    console.log("oneday", data.data);
+  })
   
   return (
     <StylesProvider injectFirst>

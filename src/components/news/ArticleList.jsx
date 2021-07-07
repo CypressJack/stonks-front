@@ -48,6 +48,7 @@ import Filters from "../Filters";
             </div>
           )
         }))
+        return true;
       });
     }
 

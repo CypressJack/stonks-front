@@ -4,7 +4,6 @@ import MyHoldingsList from "../MyHoldingsList";
 import Graph from "../graph/Graph";
 import "./Profile.scss";
 import TrxHistoryList from "./TrxHistoryList";
-import historyData from "./dummyHistoryData.json";
 
 // positive change
 const dayData = [
