@@ -10,22 +10,25 @@
   scrollbar-width: none; /* Firefox */
   padding-left: 5px;
   padding-right: 5px;
+  align-items: center;
 }
 
 .filter-outer {
   display:flex;
-  width: 375px;
+  width: 355px;
   margin-top: -50px;
   position: fixed;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 .filter-button {
   border: none;
   background: none;
   color: #414141;
-  border-radius: 4px;
+  border-radius: 40px;
   font-size: 12px;
-  margin-right: 5px;
+  margin-right: 8px;
   height: 75%;
 }
 

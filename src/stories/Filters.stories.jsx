@@ -7,6 +7,6 @@ import Filters from "../components/Filters"
 storiesOf("Filters", module)
   .add("filter list", () => (
     <Filters
-    
+    onStockClick={action('Button clicked!')}
     />
   ));
