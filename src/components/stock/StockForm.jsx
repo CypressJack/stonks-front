@@ -21,6 +21,21 @@ export default function StockForm(props) {
     })
   }
 
+  const sellStock = (amount, cost) => {
+    axios.get('/api/owned-stocks').then(data => {
+      console.log("data from get: ", data.data.owned);
+      data.data.owned.map((owned) => { if(owned.symbol === props.symbol){
+        axios.post('/api/sell-stock', {
+          cost,
+          amount,
+          symbol: props.symbol,
+          type: false,
+          user_id: 1
+        })
+      }})
+    })
+  }
+
   return (
     <form className={"stock-form"}>
       <TextField
@@ -39,7 +54,7 @@ export default function StockForm(props) {
       />
       <div className={"button-container"}>
         <span className={"button"} onClick={()=>{buyStock(amount,props.currentPrice)}}><Button>Buy</Button></span>
-        <span className={"button"} onClick={props.onClick}><Button sell>Sell</Button></span>
+        <span className={"button"} onClick={()=>{sellStock(amount, props.currentPrice)}}><Button sell>Sell</Button></span>
       </div>
     </form>
   );
