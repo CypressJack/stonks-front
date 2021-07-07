@@ -14,6 +14,8 @@ export default function Button(props) {
   const buttonClass = classNames(
     {'MuiButton-tutorial': props.tutorial,
     'red-button': props.sell,
+    'MuiButton-tutorial-completed': props.completed,
+    'MuiButton-back': props.back
     }
   );
 
