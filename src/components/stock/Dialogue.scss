@@ -1,0 +1,19 @@
+.card-container {
+  position: fixed;
+  width: 150px;
+  height: 75px;
+  bottom: 203px;
+  left: 110px;
+}
+
+.dialogue-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 75px;
+}
+
+.MuiPaper-root.dialogue-card {
+  color: #666666;
+}
