@@ -36,10 +36,8 @@ export default function Stock(props) {
     return results;
   };
 
-
-
   const allData = createGraphData(props.data.history);
-  const monthData = createGraphData(props.data.month)
+  const monthData = createGraphData(props.data.month);
   const yearData = allData.slice(-52);
   const weekData = monthData.slice(-7);
   const dayData = createDayData(props.data.day);
@@ -47,7 +45,6 @@ export default function Stock(props) {
   
   const [selectedData, setSelectedData] = useState(allData);
   const [timeLine, setTimeLine] = useState('Month');
-  
 
   let graphColor;
   let timeLineString;
@@ -183,6 +180,13 @@ export default function Stock(props) {
     return true;
   })})}
 
+
+  const tutFunc = function(tutMode,event) {
+    if (tutMode === true) {
+      console.log("reached!", event.target);
+    }
+  }
+
   return (
     <main className='single-stock-container'>
       <BalanceHeader
@@ -192,13 +196,14 @@ export default function Stock(props) {
         timeline={timeLineString}
         profile={false}
         stockPrice={props.data.stockData.lastsale}
+        onClick={(event) => {tutFunc(props.tutMode, event);}}
       />
-      {timeLine === 'Live' && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} />}
-      {timeLine === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} />}
-      {timeLine === 'Month' && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} />}
-      {timeLine === 'Week' && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} />}
-      {timeLine === 'Year' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} />}
-      {timeLine === 'All Time' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'All Time'} />}
+      {timeLine === 'Live' && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {timeLine === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {timeLine === 'Month' && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {timeLine === 'Week' && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {timeLine === 'Year' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {timeLine === 'All Time' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'All Time'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
       <StockSummary
           name={props.data.stockData.name}
           symbol={props.data.stockData.symbol}
@@ -210,6 +215,7 @@ export default function Stock(props) {
           range={checkRange(props.data.company['52WeekLow'], props.data.company['52WeekHigh'])}
           ask={props.data.prices.allprices.c}
           amountOwned={checkOwned(state.owned.owned)}
+          onClick={event => tutFunc(props.tutMode, event)}
       />
       <StockForm
       currentPrice={props.data.prices.allprices.c}

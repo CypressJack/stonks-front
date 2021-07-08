@@ -34,11 +34,7 @@ export default function App() {
   const { state, setState } = useApiData();
   const { mode, transition, tutBack } = useVisualMode("showstocks");
   const [search, setSearch] = useState("");
-
-  // console.log("users", state.users.users)
-  // console.log("transacts", state.transactions.transactions)
-  // console.log("tutorials", state.tutorials.tutorials)
-  // console.log("owned stocks", state.owned.owned)
+  const [tutMode, setTutMode] = useState(false);
 
   const func = function (symbol) {
     let resultsObj = {};
@@ -50,33 +46,31 @@ export default function App() {
       }
     }
 
-    return axios
-      .get(`/api/ticker-prices/${symbol}`)
-      .then((data) => {
-        axios.get(`/api/all-history/${symbol}`).then((historyData) => {
-          axios
-            .get(`/api/company-data/${symbol}`)
-            .then((companyHistory) => {
-              resultsObj.history = historyData.data;
-              resultsObj.prices = data.data;
-              resultsObj.company = companyHistory.data.companyData;
-            })
-            .then(() => {
-              axios.get(`/api/30-history/${symbol}`).then((data) => {
-                resultsObj.month = data.data;
-              });
-            }).then(()=> {
-              axios.get(`/api/oneday-history/${symbol}`).then((day)=> {
-                resultsObj.day = day.data
-                setState((prev) => ({ ...prev, singleStock: resultsObj }));
-                transition("showstocks-single");
-              })
-            })
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    Promise.all([
+      axios.default.get(
+        `/api/ticker-prices/${symbol}`
+      ),
+      axios.default.get(
+        `/api/all-history/${symbol}`
+      ),
+      axios.default.get(
+        `/api/company-data/${symbol}`
+      ),
+      axios.default.get(
+        `/api/30-history/${symbol}`
+      ),
+      axios.default.get(
+        `/api/oneday-history/${symbol}`
+      )
+    ]).then((all) => {
+      resultsObj.history = all[1].data;
+      resultsObj.prices = all[0].data;
+      resultsObj.company = all[2].data.companyData;
+      resultsObj.month = all[3].data;
+      resultsObj.day = all[4].data;
+      setState((prev) => ({ ...prev, singleStock: resultsObj }));
+      transition("showstocks-single");
+    }).catch(err => {console.log(err.message)})
   };
 
   return (
@@ -92,6 +86,7 @@ export default function App() {
               stocks={state.stocks}
               crypto={state.crypto}
               owned={state.owned.owned}
+              tutMode={tutMode}
             />
           )}
           {mode === "showtutorials" && (
@@ -115,13 +110,14 @@ export default function App() {
               search={search}
               searchState={setSearch}
               onClick={func}
+              tutMode={tutMode}
             />
           )}
           {mode === "shownews" && (
             <News news={state.news.allnews} yourNews={state.yourNews} />
           )}
           {mode === "showstocks-single" && (
-            <Stock data={state.singleStock} owned={state.owned.owned} />
+            <Stock data={state.singleStock} owned={state.owned.owned} tutMode={tutMode}/>
           )}
         </div>
         <Nav
@@ -129,6 +125,8 @@ export default function App() {
           tutorialClick={() => transition("showtutorials")}
           newsClick={() => transition("shownews")}
           searchClick={() => transition("showstocks")}
+          tutMode={tutMode}
+          setTut={setTutMode}
         />
       </div>
     </StylesProvider>

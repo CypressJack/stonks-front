@@ -23,42 +23,42 @@ export default function StockSummary(props) {
   }
   
   return (
-    <article className={"stock-summary"}>
+    <article className={"stock-summary"} onClick={props.onClick}>
       <header className={"stock-title"}>Summary</header>
       <div className={"stock-row"}>
         <div className={"stock-column"}>
           <div className={"stock-item"}>
-            <b className='stock-item-name' >Market Cap: </b>
+            <b className='stock-item-name -mrkt-cap' >Market Cap: </b>
             <div className='stock-item-value'>{formattedCap}</div>
           </div>
           <div className={"stock-item"}>
-            <b className='stock-item-name' >Open: </b>
+            <b className='stock-item-name -open' >Open: </b>
             <div className='stock-item-value'>{`$${props.open}`}</div>
           </div>
           <div className={"stock-item"}>
-            <b className='stock-item-name' >Bid: </b>
+            <b className='stock-item-name -bid' >Bid: </b>
             <div className='stock-item-value'>{props.bid}</div>
           </div>
           <div className={"stock-item"}>
-            <b className='stock-item-name' >Ask: </b>
+            <b className='stock-item-name -ask' >Ask: </b>
             <div className='stock-item-value'>{`$${props.ask.toFixed(2)}`}</div>
           </div>
         </div>
         <div className={"stock-column"}>
           <div className={"stock-item"}>
-            <b className='stock-item-name'>EPS: </b>
+            <b className='stock-item-name -eps'>EPS: </b>
             <div className='stock-item-value'>{undef(props.eps)}</div>
           </div>
           <div className={"stock-item"}>
-            <b className='stock-item-name'>PE ratio: </b>
+            <b className='stock-item-name -pe-ratio'>PE ratio: </b>
             <div className='stock-item-value'>{undef(props.peRatio)}</div>
             </div>
           <div className={"stock-item-52wk"}>
-            <b className='stock-item-name'>52 Week Range: </b>
+            <b className='stock-item-name -52-wk-rng'>52 Week Range: </b>
             <div className='stock-item-value'>{props.range}</div>
           </div>
           <div className={"stock-item"}>
-            <b className='stock-item-name'>Amount Owned: </b>
+            <b className='stock-item-name -amnt-owned'>Amount Owned: </b>
             <div className='stock-item-value'>{props.amountOwned}</div>
           </div>
         </div>
