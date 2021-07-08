@@ -36,10 +36,8 @@ export default function Stock(props) {
     return results;
   };
 
-
-
   const allData = createGraphData(props.data.history);
-  const monthData = createGraphData(props.data.month)
+  const monthData = createGraphData(props.data.month);
   const yearData = allData.slice(-52);
   const weekData = monthData.slice(-7);
   const dayData = createDayData(props.data.day);
@@ -47,7 +45,6 @@ export default function Stock(props) {
   
   const [selectedData, setSelectedData] = useState(allData);
   const [timeLine, setTimeLine] = useState('Month');
-  
 
   let graphColor;
   let timeLineString;
@@ -183,6 +180,13 @@ export default function Stock(props) {
     return true;
   })})}
 
+
+  const tutFunc = function(tutMode,event) {
+    if (tutMode === true) {
+      console.log("reached!", event);
+    }
+  }
+
   return (
     <main className='single-stock-container'>
       <BalanceHeader
@@ -192,6 +196,7 @@ export default function Stock(props) {
         timeline={timeLineString}
         profile={false}
         stockPrice={props.data.stockData.lastsale}
+        onClick={(event) => {tutFunc(props.tutMode, event)}}
       />
       {timeLine === 'Live' && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} />}
       {timeLine === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} />}

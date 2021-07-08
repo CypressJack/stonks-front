@@ -16,11 +16,11 @@ export default function Nav(props) {
     setSelected(button);
   };
 
-  const tutToggle = function(button) {
-    if (props.tutMode === HLP) {
-      props.setTut("");
+  const tutToggle = function() {
+    if (props.tutMode === true) {
+      props.setTut(false);
     } else {
-      props.setTut(button)
+      props.setTut(true)
     }
   };
 
