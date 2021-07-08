@@ -3,7 +3,6 @@ import { Card, Slide } from '@material-ui/core';
 import './Dialogue.scss';
 
 export default function Dialogue(props) {
-
   return (
     <Slide direction="up" in={true} mountOnEnter unmountOnExit>
     <div className={'card-container'}>

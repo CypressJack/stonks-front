@@ -72,3 +72,13 @@ $box-shadow: #acacac;
   height: 25px;
   font-size: 15px;
 }
+
+.MuiPaper-root {
+  margin-bottom: 60px;
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.market-cap {
+  margin-bottom: 600px;
+  background-color: white;
+  color: #666666;
+}

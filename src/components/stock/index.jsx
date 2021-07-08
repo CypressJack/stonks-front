@@ -8,11 +8,13 @@ import Dialogue from './Dialogue';
 
 import axios from 'axios';
 import useApiData from "../../hooks/useApiData";
+import TooltipBar from "../TooltipBar";
 
 export default function Stock(props) {
 
   const { state, setState } = useApiData();
   const [status, setStatus] = useState("")
+  const [ tooltip, setTooltip ] = useState([]);
   
   const createGraphData = (history) => {
     let index = Object.keys(history).length;
@@ -183,9 +185,22 @@ export default function Stock(props) {
 
   const tutFunc = function(tutMode,event) {
     if (tutMode === true) {
-      console.log("reached!", event.target);
+      switch (event.target.classList[1]) {
+        case "-mrkt-cap":
+          setTooltip(["Market Cap", "A fuckin message", "market-cap"])
+          break;
+      
+        default:
+          break;
+      }
     }
   }
+  
+  React.useEffect(() => {
+    if (props.tutMode === false) {
+      setTooltip([])
+    }
+  }, [props.tutMode]);
 
   return (
     <main className='single-stock-container'>
@@ -223,6 +238,7 @@ export default function Stock(props) {
       sell={sellStock}
       buy={buyStock}
       />
+      {props.tutMode && <TooltipBar tooltip={tooltip}/>}
       {status === 'purchased' && <Dialogue message="Stock Purchased!"/>}
       {status === 'sold' && <Dialogue message="Stock Sold!"/>}
     </main>
