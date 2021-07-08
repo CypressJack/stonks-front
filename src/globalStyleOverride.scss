@@ -47,7 +47,10 @@ $box-shadow: #acacac;
 
 .MuiButton-tutorial-completed {
   background-color: $stonk-green;
+}
 
+.MuiAlert-root {
+  background-color: $stonk-green;
 }
 
 .MuiButton-tutorial-completed:hover {
