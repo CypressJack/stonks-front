@@ -4,16 +4,15 @@ import BalanceHeader from '../BalanceHeader';
 import Graph from '../graph/Graph';
 import StockSummary from './StockSummary';
 import StockForm from './StockForm';
+import Dialogue from './Dialogue';
 
 import axios from 'axios';
 import useApiData from "../../hooks/useApiData";
 
 export default function Stock(props) {
 
-  console.log("props.data", props.data)
-
-
   const { state, setState } = useApiData();
+  const [status, setStatus] = useState("")
   
   const createGraphData = (history) => {
     let index = Object.keys(history).length;
@@ -142,6 +141,8 @@ export default function Stock(props) {
           oldstate.owned = all[2].data
           setState(oldstate)
         }
+        setStatus("purchased")
+        setTimeout(()=> {setStatus("")}, 2000)
         return () => mounted = false;
       })
     })
@@ -177,6 +178,8 @@ export default function Stock(props) {
           })
         })
       }
+      setStatus("sold")
+      setTimeout(()=> {setStatus("")}, 2000)
     return true;
   })})}
 
@@ -214,6 +217,8 @@ export default function Stock(props) {
       sell={sellStock}
       buy={buyStock}
       />
+      {status === 'purchased' && <Dialogue message="Stock Purchased!"/>}
+      {status === 'sold' && <Dialogue message="Stock Sold!"/>}
     </main>
   );
 }

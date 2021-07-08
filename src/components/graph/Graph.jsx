@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Button from "../Button";
 import MuiButton from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Graph.scss";
@@ -10,11 +9,10 @@ import {
   LineSeries,
   Tooltip
 } from '@devexpress/dx-react-chart-material-ui';
-import { EventTracker, HoverState } from '@devexpress/dx-react-chart';
+import { EventTracker } from '@devexpress/dx-react-chart';
 import { Animation } from '@devexpress/dx-react-chart';
 
 export default function Graph(props) {
-
 
   const [selected, setSelected] = useState(props.selected ? props.selected : 'Month');
   const [selectedColor, setSelectedColor] = useState('green-selected');
