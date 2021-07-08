@@ -21,6 +21,7 @@ export default function StockForm(props) {
       value={`$${amount * props.currentPrice}`}
       onChange={event => setAmount(event.target.value)}
       variant={'outlined'}
+      disabled
       />
       <div className={"button-container"}>
         <span className={"button"} onClick={()=>{props.buy(amount,props.currentPrice)}}><Button>Buy</Button></span>

@@ -3,7 +3,17 @@ import "./StockSummary.scss";
 
 export default function StockSummary(props) {
 
-  const formattedCap = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format( [props.marketCap] )
+  const marketCap = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format( [props.marketCap] )
+
+  let formattedCap = marketCap
+
+  if (marketCap.length === 18) {
+    formattedCap = `${marketCap.slice(0, 3)}B`
+  };
+
+  if (marketCap.length === 17) {
+    formattedCap = `${marketCap.slice(0, 2)}B`
+  };
 
   const undef = (value) => {
     if (!value){
@@ -17,16 +27,40 @@ export default function StockSummary(props) {
       <header className={"stock-title"}>Summary</header>
       <div className={"stock-row"}>
         <div className={"stock-column"}>
-          <span className={"stock-item"}><b>Market Cap: </b>{formattedCap}</span>
-          <span className={"stock-item"}><b>Open: </b>{`$${props.open}`}</span>
-          <span className={"stock-item"}><b>Bid: </b>{props.bid}</span>
-          <span className={"stock-item"}><b>Ask: </b>{`$${props.ask.toFixed(2)}`}</span>
+          <div className={"stock-item"}>
+            <b className='stock-item-name' >Market Cap: </b>
+            <div className='stock-item-value'>{formattedCap}</div>
+          </div>
+          <div className={"stock-item"}>
+            <b className='stock-item-name' >Open: </b>
+            <div className='stock-item-value'>{`$${props.open}`}</div>
+          </div>
+          <div className={"stock-item"}>
+            <b className='stock-item-name' >Bid: </b>
+            <div className='stock-item-value'>{props.bid}</div>
+          </div>
+          <div className={"stock-item"}>
+            <b className='stock-item-name' >Ask: </b>
+            <div className='stock-item-value'>{`$${props.ask.toFixed(2)}`}</div>
+          </div>
         </div>
         <div className={"stock-column"}>
-          <span className={"stock-item"}><b>EPS: </b>{undef(props.eps)}</span>
-          <span className={"stock-item"}><b>PE ratio: </b>{undef(props.peRatio)}</span>
-          <span className={"stock-item"}><b>52 Week Range: </b>{props.range}</span>
-          <span className={"stock-item"}><b>Amount Owned: </b>{props.amountOwned}</span>
+          <div className={"stock-item"}>
+            <b className='stock-item-name'>EPS: </b>
+            <div className='stock-item-value'>{undef(props.eps)}</div>
+          </div>
+          <div className={"stock-item"}>
+            <b className='stock-item-name'>PE ratio: </b>
+            <div className='stock-item-value'>{undef(props.peRatio)}</div>
+            </div>
+          <div className={"stock-item-52wk"}>
+            <b className='stock-item-name'>52 Week Range: </b>
+            <div className='stock-item-value'>{props.range}</div>
+          </div>
+          <div className={"stock-item"}>
+            <b className='stock-item-name'>Amount Owned: </b>
+            <div className='stock-item-value'>{props.amountOwned}</div>
+          </div>
         </div>
       </div>
     </article>
