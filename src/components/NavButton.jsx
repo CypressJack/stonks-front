@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import "./Nav.scss";
 import Search from "@material-ui/icons/Search";
-import Settings from "@material-ui/icons/Settings";
+import HelpIcon from "@material-ui/icons/HelpOutline";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Learn from "@material-ui/icons/ImportContacts";
 import ArtTrackRounded from "@material-ui/icons/ArtTrackRounded";
@@ -17,7 +17,7 @@ export default function NavButton(props) {
   } else if (props.learn) {
     type = <Learn/>
   } else if (props.settings) {
-    type = <Settings/>
+    type = <HelpIcon/>
   } else {
     type = <ArtTrackRounded/>
   }

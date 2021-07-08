@@ -34,11 +34,7 @@ export default function App() {
   const { state, setState } = useApiData();
   const { mode, transition, tutBack } = useVisualMode("showstocks");
   const [search, setSearch] = useState("");
-
-  // console.log("users", state.users.users)
-  // console.log("transacts", state.transactions.transactions)
-  // console.log("tutorials", state.tutorials.tutorials)
-  // console.log("owned stocks", state.owned.owned)
+  const [tutMode, setTutMode] = useState("");
 
   const func = function (symbol) {
     let resultsObj = {};
@@ -129,6 +125,8 @@ export default function App() {
           tutorialClick={() => transition("showtutorials")}
           newsClick={() => transition("shownews")}
           searchClick={() => transition("showstocks")}
+          tutMode={tutMode}
+          setTut={setTutMode}
         />
       </div>
     </StylesProvider>
