@@ -4,19 +4,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
   color: #636363;
-  height: 250px;
+  height: 200px;
   margin-bottom: 5px;
   margin-top: 20px;
+  border-radius: 10px;
 }
 .stock-title {
   font-size: 18pt;
+  margin-bottom: 10px;
 }
 
 .stock-row {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
   font-size: 13pt;
   color: $font-color-secondary;
 }
@@ -24,12 +29,28 @@
 .stock-column {
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  justify-content: center;
   width: 170px;
 }
 
 .stock-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   margin-top: 10px;
+  padding-left: 20px;
+}
+
+.stock-item-name {
+  padding-right: 10px;
+}
+
+
+.stock-item-52wk {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding-left: 20px;
 }
 
 b {
