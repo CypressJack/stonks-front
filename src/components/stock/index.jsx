@@ -181,7 +181,7 @@ export default function Stock(props) {
   })})}
 
   return (
-    <main>
+    <main className='single-stock-container'>
       <BalanceHeader
         name={props.data.stockData.name}
         value={selectedData[selectedData.length - 1].value}
