@@ -6,6 +6,9 @@ import TextField from "@material-ui/core/TextField";
 export default function StockForm(props) {
   const [amount, setAmount] = useState("");
   
+  const formattedMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount * props.currentPrice) 
+
+
   return (
     <form className={"stock-form"}>
       <TextField
@@ -14,11 +17,12 @@ export default function StockForm(props) {
       value={amount}
       onChange={event => setAmount(event.target.value)}
       variant={'outlined'}
+      type='number'
       />
       <TextField
       className={"amount-input"}
       label={"Cost in dollars."}
-      value={`$${amount * props.currentPrice}`}
+      value={`${formattedMoney}`}
       onChange={event => setAmount(event.target.value)}
       variant={'outlined'}
       disabled
