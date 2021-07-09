@@ -55,7 +55,7 @@ export default function MyHoldingsListItem(props) {
   return (
     <li className="ticker-list-item" onClick={props.onClick}>
       <header className="ticker-head">
-        <span>{displayName} <span className={pctClass}>{pctDisplay}</span></span><span>{displayPriceMoney}</span>
+        <span><b>{displayName}</b><span className={pctClass}>{pctDisplay}</span></span><span>{displayPriceMoney}</span>
       </header>
       <footer className="ticker-footer">
         <span>{`${props.amountOwned} owned`}</span><span>{totalPriceMoney}</span>
