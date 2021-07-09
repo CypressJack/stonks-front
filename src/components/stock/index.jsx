@@ -8,11 +8,13 @@ import Dialogue from './Dialogue';
 
 import axios from 'axios';
 import useApiData from "../../hooks/useApiData";
+import TooltipBar from "../TooltipBar";
 
 export default function Stock(props) {
 
   const { state, setState } = useApiData();
   const [status, setStatus] = useState("")
+  const [ tooltip, setTooltip ] = useState([]);
   
   const createGraphData = (history) => {
     let index = Object.keys(history).length;
@@ -181,11 +183,48 @@ export default function Stock(props) {
   })})}
 
 
-  const tutFunc = function(tutMode,event) {
+  const tutFunc = function(tutMode, event) {
     if (tutMode === true) {
-      console.log("reached!", event.target);
+      switch (event.target.classList[1]) {
+        case "-mrkt-cap":
+          setTooltip(["Market Cap:", "The amount of available shares, multiplied by the current price.", "market-cap"])
+          break;
+        case "-eps":
+          setTooltip(["Earnings Per Share:", "Company Revenue per quarter divided by available shares", "eps"])
+          break;
+        case "-open":
+          setTooltip(["Opening Price:", "The price of the share when the market opens (6:30am Western)", "open"])
+          break;
+        case "-pe-ratio":
+          setTooltip(["Price to Earnings Ratio:", "All company revenue in a quarter divided by the price of each share", "pe-ratio"])
+          break;
+        case "-bid":
+          setTooltip(["Bid:", "The current highest offer that people are making to buy the share", "bid"])
+          break;
+        case "-wk-rng":
+          setTooltip(["52 Week Range:", "Highest and Lowest price the stock achieved in the past 52 weeks", "wk-rng"])
+          break;
+        case "-ask":
+          setTooltip(["Asking Price:", "The current price at which the stock is being sold for", "ask"])
+          break;
+        case "-amnt-owned":
+          setTooltip(["Amount Owned:", "The amount of shares you currently own", "amnt-owned"])
+          break;
+        case "-header":
+          setTooltip(["Company, Current Price & Percent Change:", "The large text indicates the company name. The following price value represents the current asking price of the stock. Finally, the smaller price value and percent show the change in price over time, depending on the graph filter selected.", "header"])
+          break;
+        default:
+          setTooltip(["Stock Graph:", "Shows price trends over time, depending on the filter selected at the bottom. You can click on the points on the graph to show the price at any given time.", "graph", "1D shows price updates for the day every 5 mins. 1W shows closing price per day for a week. 1M shows closing price per day for 30 days. 1Y shows closing price per week for a whole year"])
+          break;
+      }
     }
   }
+  
+  React.useEffect(() => {
+    if (props.tutMode === false) {
+      setTooltip([])
+    }
+  }, [props.tutMode]);
 
   return (
     <main className='single-stock-container'>
@@ -223,6 +262,7 @@ export default function Stock(props) {
       sell={sellStock}
       buy={buyStock}
       />
+      {props.tutMode && <TooltipBar tooltip={tooltip}/>}
       {status === 'purchased' && <Dialogue message="Stock Purchased!"/>}
       {status === 'sold' && <Dialogue message="Stock Sold!"/>}
     </main>

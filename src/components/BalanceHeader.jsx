@@ -26,7 +26,7 @@ export default function BalanceHeader(props) {
   const profileValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.value)
 
   return (
-    <div className='balance-header-container' onClick={props.onClick}>
+    <div className='balance-header-container -header' onClick={props.onClick}>
       <p className='balance-header-text'>
         {props.name}
       </p>

@@ -17,6 +17,7 @@ import TutorialsList from "./components/tutorials";
 import Profile from "./components/profile";
 import Stock from "./components/stock";
 import Loading from "./components/loading/Loading";
+import CustomizedSnackbars from "./components/TutorialBar";
 
 // Override styling on any material component in this file
 import "./globalStyleOverride.scss";
@@ -119,6 +120,8 @@ export default function App() {
           {mode === "showstocks-single" && (
             <Stock data={state.singleStock} owned={state.owned.owned} tutMode={tutMode}/>
           )}
+          {tutMode ===true && (<CustomizedSnackbars tutorial={tutMode}/>)}
+
         </div>
         <Nav
           profileClick={() => transition("showprofile")}

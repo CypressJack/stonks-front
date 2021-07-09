@@ -54,11 +54,11 @@ export default function StockSummary(props) {
             <div className='stock-item-value'>{undef(props.peRatio)}</div>
             </div>
           <div className={"stock-item-52wk"}>
-            <b className='stock-item-name -52-wk-rng'>52 Week Range: </b>
+            <b className='stock-item-name -wk-rng'>52 Week Range: </b>
             <div className='stock-item-value'>{props.range}</div>
           </div>
           <div className={"stock-item"}>
-            <b className='stock-item-name -amnt-owned'>Amount Owned: </b>
+            <b className='stock-item-name -amnt-owned'>Owned: </b>
             <div className='stock-item-value'>{props.amountOwned}</div>
           </div>
         </div>

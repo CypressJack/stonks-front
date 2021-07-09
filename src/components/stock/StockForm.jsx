@@ -11,22 +11,24 @@ export default function StockForm(props) {
 
   return (
     <form className={"stock-form"}>
+      <div className={"input-container"}>
       <TextField
       className={"amount-input"}
-      label={"Enter amount to buy or sell."}
+      label={"Enter amount"}
       value={amount}
       onChange={event => setAmount(event.target.value)}
       variant={'outlined'}
       type='number'
       />
       <TextField
-      className={"amount-input"}
+      className={"amount-input-money"}
       label={"Cost in dollars."}
       value={`${formattedMoney}`}
       onChange={event => setAmount(event.target.value)}
       variant={'outlined'}
       disabled
       />
+      </div>
       <div className={"button-container"}>
         <span className={"button"} onClick={()=>{props.buy(amount,props.currentPrice)}}><Button>Buy</Button></span>
         <span className={"button"} onClick={()=>{props.sell(amount, props.currentPrice)}}><Button sell>Sell</Button></span>
