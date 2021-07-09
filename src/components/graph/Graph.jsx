@@ -79,10 +79,12 @@ export default function Graph(props) {
 
 
   return (
-    <div className='chart-container'>
+    <div className='chart-container' >
       <Chart
+      className="graph-page"
       data={props.data}
       height={200}
+      onClick={props.onClick}
     >
       <ArgumentAxis
       showLabels={false}
@@ -110,7 +112,7 @@ export default function Graph(props) {
       contentComponent={TooltipContent}
       />
       </Chart>
-      <div className='graph-button-container'>
+      <div className='graph-button-container' >
         <MuiButton onClick={()=> {setSelected(LIVE); props.setTimeLine(LIVE); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === LIVE ?  selectedColor : unSelectedColor}`}>
           live
         </MuiButton>
