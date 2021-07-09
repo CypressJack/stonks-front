@@ -9,11 +9,35 @@ export default function MyHoldingsListItem(props) {
   let displayPrice;
   let totalPrice;
   let toParse;
+
+  let percentNum;
+  let priceNum;
+
+  if (typeof props.currentPrice === 'string') {
+    priceNum = parseFloat(props.currentPrice.slice(1));
+  } else {
+    priceNum = props.currentPrice;
+  };
+
+  if (typeof props.pctChange === 'string') {
+    percentNum = parseFloat(props.pctChange);
+  } else {
+    priceNum = props.currentPrice;
+  };
+
+  
   if (parseFloat(props.pctChange) >= 0.00) {
     pctClass = "green-percentage"
     pctDisplay = `+${props.pctChange}`
   }
-
+  if (typeof props.pctChange === 'number' && props.pctChange > 0 ) {
+    pctDisplay = `+${props.pctChange.toFixed(3)}%`
+  }
+  
+  if (typeof props.pctChange === 'number' && props.pctChange < 0 ) {
+    pctDisplay = `${props.pctChange.toFixed(3)}%`
+  }
+  
   if (displayNameDeconstructed.length > 17) {
     displayNameDeconstructed.splice(18, displayNameDeconstructed.length - 17)
     displayName = displayNameDeconstructed.join('')
@@ -21,26 +45,20 @@ export default function MyHoldingsListItem(props) {
   } else {
     displayName = props.name
   }
-
-  if (typeof(props.currentPrice) === 'number') {
-    displayPrice = `$${parseFloat(props.currentPrice).toFixed(4)}`;
-  } else {
-    displayPrice = props.currentPrice.substr(1, props.currentPrice.length);
-  }
   
-  if (typeof(props.currentPrice) === 'number') {
-    toParse = props.currentPrice;
-  } else {
-    toParse = displayPrice;
-  }
-  totalPrice = (parseFloat(props.amountOwned) * parseFloat(toParse)).toFixed(2);
+  const displayPriceMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(priceNum))
+  displayPrice = displayPriceMoney;
+
+  totalPrice = (parseFloat(props.amountOwned) * parseFloat(priceNum)).toFixed(2);
+  const totalPriceMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(totalPrice))
+
   return (
     <li className="ticker-list-item" onClick={props.onClick}>
       <header className="ticker-head">
-        <span>{displayName} <span className={pctClass}>{pctDisplay}</span></span><span>{displayPrice}</span>
+        <span>{displayName} <span className={pctClass}>{pctDisplay}</span></span><span>{displayPriceMoney}</span>
       </header>
       <footer className="ticker-footer">
-        <span>{`${props.amountOwned} owned`}</span><span>{`$${totalPrice}`}</span>
+        <span>{`${props.amountOwned} owned`}</span><span>{totalPriceMoney}</span>
       </footer>
     </li>
   );
