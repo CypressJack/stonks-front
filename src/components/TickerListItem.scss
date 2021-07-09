@@ -12,6 +12,8 @@
 display: flex;
  justify-content: space-between;
  margin: 5px;
+ padding-left: 10px;
+ padding-right: 10px;
 }
 
 .ticker-footer {
@@ -19,6 +21,8 @@ display: flex;
   justify-content: space-between;
   margin: 5px;
   color: #A2A2A2;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .green-percentage {
