@@ -14,25 +14,25 @@
 
 .tutorial-title {
   font-size: 20pt;
-  text-decoration: underline 1px;
 }
 
 .subtitle {
   font-size: 14pt;
-  text-decoration: underline 1px;
 }
 
 .back-button-container {
+  display: flex;
   position: fixed;
   bottom: 80px;
-  left: 270px;
-  width: 90px;
-  height: 45px;
+  left: 220px;
+  width: 120px;
+  height: 65px;
 }
 
-.MuiButton-back {
-  width: 100%;
+.MuiButton-root.MuiButton-back {
+  width: 50%;
   height: 100%;
   font-size: 14pt;
   box-shadow: 0px 3px 4px $box-shadow;
+  margin-right: 5px;
 }

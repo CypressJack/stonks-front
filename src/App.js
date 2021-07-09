@@ -36,8 +36,10 @@ export default function App() {
   const { mode, transition, tutBack } = useVisualMode("showstocks");
   const [search, setSearch] = useState("");
   const [tutMode, setTutMode] = useState(false);
+  const [currentTut, setCurrentTut] = useState("")
+  const [ tooltip, setTooltip ] = useState([]);
 
-  const func = function (symbol) {
+  const func = function (symbol, filter) {
     let resultsObj = {};
     transition('loading')
 
@@ -47,32 +49,58 @@ export default function App() {
       }
     }
 
-    Promise.all([
-      axios.default.get(
-        `/api/ticker-prices/${symbol}`
-      ),
-      axios.default.get(
-        `/api/all-history/${symbol}`
-      ),
-      axios.default.get(
-        `/api/company-data/${symbol}`
-      ),
-      axios.default.get(
-        `/api/30-history/${symbol}`
-      ),
-      axios.default.get(
-        `/api/oneday-history/${symbol}`
-      )
-    ]).then((all) => {
-      resultsObj.history = all[1].data;
-      resultsObj.prices = all[0].data;
-      resultsObj.company = all[2].data.companyData;
-      resultsObj.month = all[3].data;
-      resultsObj.day = all[4].data;
-      setState((prev) => ({ ...prev, singleStock: resultsObj }));
-      transition("showstocks-single");
-    }).catch(err => {console.log(err.message)})
+    if (filter === 'Crypto') {
+      Promise.all([
+        axios.default.get(
+          `/api/get-btc`
+        )
+      ]).then((all) => {
+        resultsObj.history = all[0].data.element;
+        resultsObj.prices = {allprices: { o: '41,400.00', c: 33498}};
+        resultsObj.company = {}
+        resultsObj.month = all[0].data.element;
+        resultsObj.day = all[0].data.element;
+        setState((prev) => ({ ...prev, singleStock: resultsObj }));
+        transition("showstocks-single");
+      }).catch((err)=> {
+        console.log(err.message)
+      })
+    } else {
+      Promise.all([
+        axios.default.get(
+          `/api/ticker-prices/${symbol}`
+        ),
+        axios.default.get(
+          `/api/all-history/${symbol}`
+        ),
+        axios.default.get(
+          `/api/company-data/${symbol}`
+        ),
+        axios.default.get(
+          `/api/30-history/${symbol}`
+        ),
+        axios.default.get(
+          `/api/oneday-history/${symbol}`
+        )
+      ]).then((all) => {
+        resultsObj.history = all[1].data;
+        resultsObj.prices = all[0].data;
+        resultsObj.company = all[2].data.companyData;
+        resultsObj.month = all[3].data;
+        resultsObj.day = all[4].data;
+        setState((prev) => ({ ...prev, singleStock: resultsObj }));
+        transition("showstocks-single");
+      }).catch(err => {console.log(err.message)})
+    }
   };
+
+  const completeTutorial = (currentTut) => {
+    axios.post(`/api/complete-tutorial/${currentTut}`).then((data)=>{
+      setState((prev)=>({...prev, tutorials: data.data}))
+    }).then(()=> {
+      tutBack();
+    })
+  }
 
   return (
     <StylesProvider injectFirst>
@@ -93,6 +121,8 @@ export default function App() {
           {mode === "showtutorials" && (
             <TutorialsList
               onClick={() => transition("showtutorials-individual")}
+              completed={state.tutorials}
+              setState = {setCurrentTut}
             />
           )}
           {mode === "showtutorials-individual" && (
@@ -101,7 +131,8 @@ export default function App() {
               paragraph1={para1}
               subtitle1={sub1}
               paragraph2={para2}
-              onClick={()=> tutBack() }
+              onClick={()=> {tutBack();} }
+              onComplete = {() => {completeTutorial(currentTut)}}
             />
           )}
           {mode === "showstocks" && (
@@ -112,13 +143,15 @@ export default function App() {
               searchState={setSearch}
               onClick={func}
               tutMode={tutMode}
+              tooltip={tooltip}
+              setTooltip={setTooltip}
             />
           )}
           {mode === "shownews" && (
             <News news={state.news.allnews} yourNews={state.yourNews} />
           )}
           {mode === "showstocks-single" && (
-            <Stock data={state.singleStock} owned={state.owned.owned} tutMode={tutMode}/>
+            <Stock data={state.singleStock} owned={state.owned.owned} tutMode={tutMode} tooltip={tooltip} setTooltip={setTooltip} setState={setState} state={state}/>
           )}
           {tutMode ===true && (<CustomizedSnackbars tutorial={tutMode}/>)}
 
