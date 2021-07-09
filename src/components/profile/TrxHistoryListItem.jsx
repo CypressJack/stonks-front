@@ -12,13 +12,15 @@ export default function TrxHistoryListItem(props) {
     buySell = 'Sold'
   }
 
+  const displayTotalMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(displayTotal)
+
   return (
     <li className="ticker-list-item" onClick={props.onClick}>
     <header className="ticker-head">
       <span>{props.name}</span><span>{`$${props.price}`}</span>
     </header>
     <footer className="ticker-footer">
-      <span>{`${props.amount} ${buySell}`}</span><span className={priceClass}>{`${props.type === true ? '-' : '+'}$${displayTotal}`}</span>
+      <span>{`${props.amount} ${buySell}`}</span><span className={priceClass}>{`${props.type === true ? '-' : '+'}${displayTotalMoney}`}</span>
     </footer>
   </li>
   );

@@ -50,7 +50,7 @@ export default function TickerListItem(props) {
   return (
     <li className="ticker-list-item" onClick={() => props.onClick(props.symbol)}>
       <header className="ticker-head">
-        <span><b>{displayName}</b></span><span>{displayPriceMoney}</span>
+        <span>{displayName}</span><span>{displayPriceMoney}</span>
       </header>
       <footer className="ticker-footer">
         <span>{props.symbol}</span><span className={pctClass}>{`${percentNum}%`}</span>

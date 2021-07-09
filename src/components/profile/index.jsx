@@ -190,14 +190,14 @@ export default function Profile(props) {
       setTimeLine={setTimeLine}
       />
       <p className='my-holdings-header'>
-        My Holdings
+        <b>My Holdings</b>
       </p>
       <MyHoldingsList
       className='profile-holdings-list'
       stocks={myHoldings(props.owned, props.stocks.stocks, props.crypto.allcrypto)}
       />
       <p className='my-holdings-header'>
-        Transaction History
+        <b>Transaction History</b>
       </p>
       <TrxHistoryList stocks={myTransactions(props.transactions.transactions, props.stocks.stocks, props.crypto.allcrypto)}/>
     </div>

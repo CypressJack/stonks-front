@@ -13,7 +13,9 @@ import { EventTracker } from '@devexpress/dx-react-chart';
 import { Animation } from '@devexpress/dx-react-chart';
 import { HoverState } from '@devexpress/dx-react-chart';
 import { SelectionState } from '@devexpress/dx-react-chart';
+import { ValueScale } from '@devexpress/dx-react-chart';
 import { format } from 'd3-format';
+import { scaleLinear } from 'd3-scale';
 
 
 export default function Graph(props) {
@@ -52,9 +54,6 @@ export default function Graph(props) {
     setSelectedColor('green-selected');
   };
 
-
-  
-
   const formatTooltip = format("($.2f")(-3.5);
   const TooltipContent = ({
     data, text, style, ...props
@@ -85,13 +84,16 @@ export default function Graph(props) {
       data={props.data}
       height={200}
       onClick={props.onClick}
-    >
+      >
+      <ValueScale
+      factory={scaleLinear}
+      />
       <ArgumentAxis
       showLabels={false}
       showLine={false}
       showTicks={false} />
       <ValueAxis 
-      showLabels={false}
+      showLabels={selectedPoint ? true : false}
       showGrid={false}
       />
       <LineSeries

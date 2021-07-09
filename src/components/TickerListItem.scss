@@ -14,6 +14,7 @@ display: flex;
  margin: 5px;
  padding-left: 10px;
  padding-right: 10px;
+ font-weight: 500;
 }
 
 .ticker-footer {
@@ -27,8 +28,10 @@ display: flex;
 
 .green-percentage {
   color: #25A55F;
+  padding-left: 5px;
 }
 
 .red-percentage {
-  color: #C47777
+  color: #C47777;
+  padding-left: 5px;
 }
