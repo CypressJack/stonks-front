@@ -72,3 +72,10 @@ $box-shadow: #acacac;
   height: 25px;
   font-size: 15px;
 }
+
+.MuiPaper-root {
+  color: $stonk-green;
+  background-color: white;
+  border: 2px solid $stonk-green;
+  margin-bottom: 20px;
+}
