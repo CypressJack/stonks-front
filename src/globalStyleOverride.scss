@@ -76,9 +76,103 @@ $box-shadow: #acacac;
 .MuiPaper-root {
   margin-bottom: 60px;
 }
-
+//For individual tooltip position and style
 .MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.market-cap {
-  margin-bottom: 600px;
+  margin-bottom: 355px;
   background-color: white;
   color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.eps {
+  margin-bottom: 355px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.pe-ratio {
+  margin-bottom: 322px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.bid {
+  margin-bottom: 291px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.open {
+  margin-bottom: 322px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.wk-rng {
+  margin-bottom: 291px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.ask {
+  margin-bottom: 261px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.amnt-owned {
+  margin-bottom: 240px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.graph {
+  margin-bottom: 140px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.header {
+  margin-bottom: 440px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
 }

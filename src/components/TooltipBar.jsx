@@ -30,12 +30,15 @@ export default function CustomizedSnackbars(props) {
   };
 
   return (
-    <div className={`${classes.root} ${props.tooltip[2]}`}>
+    <div className={classes.root}>
       <Snackbar open={open} autoHideDuration={100000} onClose={()=> {setOpen(false)}} disableWindowBlurListener={true}>
         <Alert onClose={handleClose} severity="info" className={props.tooltip[2]}>
-          <b className={'tool-title'}>{props.title}</b>
+          <b className={'tool-title'}>{props.tooltip[0]}</b>
           <br/>
-          {props.message}
+          {props.tooltip[1]}
+          <br/>
+          <br/>
+          {props.tooltip.length > 3 && props.tooltip[3]}
         </Alert>
       </Snackbar>
     </div>
