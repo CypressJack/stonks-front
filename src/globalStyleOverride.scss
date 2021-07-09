@@ -17,20 +17,20 @@ $box-shadow: #acacac;
   border-radius: $button-border-radius;
 }
 /*Any existing effects can be overriden, or defined if not already*/
-.MuiButton-root:hover {
-  background-color: #1c834a;
-}
+// .MuiButton-root:hover {
+//   background-color: #1c834a;
+// }
 
 /*This is a class applied to a single button*/
-.red-button {
+.MuiButton-root.red-button {
   background-color: #C47777;
 }
 
-.red-button:hover {
-  background-color: #a76262;
-}
+// .MuiButton-root.red-button:hover {
+//   background-color: #a76262;
+// }
 /* might need to play around with space*/
-.MuiButton-tutorial {
+.MuiButton-root.MuiButton-tutorial {
   display: flex;
   position: relative;
   width: 80%;
@@ -38,23 +38,22 @@ $box-shadow: #acacac;
   box-shadow: 0px 3px 4px $box-shadow;
   background-color: #A3A3A3;
   height: 8%;
-
 }
 
-.MuiButton-tutorial:hover {
-  background-color: #636363;
-}
+// .MuiButton-root.MuiButton-tutorial:hover {
+//   background-color: #636363;
+// }
 
-.MuiButton-tutorial-completed {
+.MuiButton-root.MuiButton-tutorial-completed {
   background-color: $stonk-green;
 }
+
+// .MuiButton-root.MuiButton-tutorial-completed:hover {
+//   background-color: #1c834a;
+// }
 
 .MuiAlert-root {
   background-color: $stonk-green;
-}
-
-.MuiButton-tutorial-completed:hover {
-  background-color: #1c834a;
 }
 
 .checkmark {
@@ -84,8 +83,7 @@ $box-shadow: #acacac;
   opacity: 100%;
 }
 
-
-//For individual tooltip position and style
+//For individual tooltip position and style on individual stock page
 .MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.market-cap {
   margin-bottom: 355px;
   background-color: white;
@@ -185,3 +183,67 @@ $box-shadow: #acacac;
     color: #25A55F;
   }
 }
+
+//for individual tooltip position and style on the ticker list page
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.ticker-item {
+  margin-bottom: 440px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.ticker-name {
+  margin-bottom: 440px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.ticker-price {
+  margin-bottom: 440px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.ticker-symbol {
+  margin-bottom: 440px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.ticker-percent {
+  margin-bottom: 440px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+.MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.list {
+  margin-bottom: 440px;
+  background-color: white;
+  color: #666666;
+
+  .tool-title {
+    color: #25A55F;
+  }
+}
+
+
+

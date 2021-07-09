@@ -11,16 +11,19 @@ export default function TrxHistoryListItem(props) {
   if(props.type === false) {
     buySell = 'Sold'
   }
+  const totalPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(displayTotal))
+
+  const currentPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(props.price))
 
   const displayTotalMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(displayTotal)
 
   return (
     <li className="ticker-list-item" onClick={props.onClick}>
     <header className="ticker-head">
-      <span>{props.name}</span><span>{`$${props.price}`}</span>
+      <span>{props.name}</span><span>{currentPrice}</span>
     </header>
     <footer className="ticker-footer">
-      <span>{`${props.amount} ${buySell}`}</span><span className={priceClass}>{`${props.type === true ? '-' : '+'}${displayTotalMoney}`}</span>
+      <span>{`${props.amount} ${buySell}`}</span><span className={priceClass}>{`${props.type === true ? '-' : '+'}${totalPrice}`}</span>
     </footer>
   </li>
   );

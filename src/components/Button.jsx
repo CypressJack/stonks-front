@@ -15,7 +15,7 @@ export default function Button(props) {
     {'MuiButton-tutorial': props.tutorial,
     'red-button': props.sell,
     'MuiButton-tutorial-completed': props.completed,
-    'MuiButton-back': props.back
+    'MuiButton-back': props.back,
     }
   );
 

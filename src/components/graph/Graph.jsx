@@ -27,7 +27,6 @@ export default function Graph(props) {
   const [selectedPointValue, setSelectedPointValue] = useState();
   const [selectedPointMoney, setSelectedPointMoney] = useState();
 
-  console.log(selectedPoint);
 
   const LIVE = 'Live';
   const ONED = 'Day';

@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import Slide from '@material-ui/core/Slide';
 import "./TickerList.scss"
 import Filters from "./Filters";
-
+import TooltipBar from "./TooltipBar";
 export default function TickerList(props) {
   const [filter, setFilter] = useState("")
   let composeTickerItems;
@@ -100,6 +100,10 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.quote.USD.percent_change_24h}
           lastSale={ticker.quote.USD.price}
+          filter = {filter}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -117,6 +121,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -134,6 +141,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -151,6 +161,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -168,6 +181,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -185,6 +201,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -202,6 +221,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -219,6 +241,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -236,6 +261,9 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
@@ -253,32 +281,20 @@ export default function TickerList(props) {
           symbol={ticker.symbol}
           pctChange={ticker.pctchange}
           lastSale={ticker.lastsale}
+          tutMode={props.tutMode}
+          tooltip={props.tooltip}
+          setTooltip={props.setTooltip}
           />
         );
       }
     });
   }
-  // else if (props.stocks.stocks){
-  //   composeTickerItems = props.stocks.stocks.map(ticker => {
-  //     if ((ticker.name).toLowerCase().startsWith(props.search) || (ticker.symbol).startsWith((props.search).toUpperCase())){
-  //       return (
-  //         <TickerListItem
-  //         onClick={props.onClick}
-  //         key={ticker.symbol}
-  //         name={ticker.name}
-  //         symbol={ticker.symbol}
-  //         pctChange={ticker.pctchange}
-  //         lastSale={ticker.lastsale}
-  //         />
-  //       );
-  //     }
-  //   });
-  // } 
 
   return (
       <section>
           <SearchBar searchState={props.searchState} search={props.search}/>
           <Filters onStockClick={setFilter}/>
+          {props.tutMode && <TooltipBar tooltip={props.tooltip}/>}
         <Slide direction="up" in={true} mountOnEnter unmountOnExit>
         <ul className="ticker-list">{composeTickerItems}</ul>
         </Slide>
