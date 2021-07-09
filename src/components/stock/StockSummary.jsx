@@ -6,6 +6,11 @@ export default function StockSummary(props) {
   const marketCap = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format( [props.marketCap] )
 
   let formattedCap = marketCap
+  //$000,000,000.00
+
+  if (marketCap.length === 19) {
+    formattedCap = `${marketCap.slice(0, 3)}B`
+  }
 
   if (marketCap.length === 18) {
     formattedCap = `${marketCap.slice(0, 3)}B`
@@ -23,7 +28,9 @@ export default function StockSummary(props) {
     formattedCap = `${marketCap.slice(0, 3)}M`
   };
 
-  console.log(typeof props.eps)
+  if (marketCap.length === 13) {
+    formattedCap = `${marketCap.slice(0, 2)}M`
+  }
 
   const undef = (value) => {
     if (!value || value === 'None'){

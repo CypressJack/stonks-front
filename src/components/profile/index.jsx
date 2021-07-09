@@ -131,18 +131,18 @@ export default function Profile(props) {
       }
     }
 
-    for (let stock of mystocks){
-      for (let crypto of allcrypto){
-        if (crypto.symbol === stock.symbol){
-          results.push(stock)
-        }
-      }
-    }
+    // for (let stock of mystocks){
+    //   for (let crypto of allcrypto){
+    //     if (crypto.symbol === stock.symbol){
+    //       results.push(stock)
+    //     }
+    //   }
+    // }
 
     return results;
   }
 
-  const myHoldings = (mystocks, allstocks, allcrypto) => {
+  const myHoldings = (mystocks, allstocks) => {
     let results = [];
 
     for (let stock of mystocks){
@@ -159,19 +159,20 @@ export default function Profile(props) {
       }
     }
 
-    for (let stock of mystocks){
-      for (let crypto of allcrypto){
-        if (stock.symbol === crypto.symbol){
-          let obj = {
-            name: crypto.name,
-            pctchange: crypto.quote.USD.percent_change_24h,
-            currentPrice: crypto.quote.USD.price,
-            amount: stock.amount
-          }
-          results.push(obj)
-        }
-      }
-    }
+    // for (let stock of mystocks){
+    //   for (let crypto of allcrypto){
+    //     if (stock.symbol === crypto.symbol){
+    //       let obj = {
+    //         name: crypto.name,
+    //         pctchange: crypto.quote.USD.percent_change_24h,
+    //         currentPrice: crypto.quote.USD.price,
+    //         amount: stock.amount
+    //       }
+    //       results.push(obj)
+    //     }
+    //   }
+    // }
+    // console.log(results)
     return results;
   }
 
@@ -190,14 +191,14 @@ export default function Profile(props) {
       setTimeLine={setTimeLine}
       />
       <p className='my-holdings-header'>
-        My Holdings
+        <b>My Holdings</b>
       </p>
       <MyHoldingsList
       className='profile-holdings-list'
-      stocks={myHoldings(props.owned, props.stocks.stocks, props.crypto.allcrypto)}
+      stocks={myHoldings(props.owned, props.stocks.stocks)}
       />
       <p className='my-holdings-header'>
-        Transaction History
+        <b>Transaction History</b>
       </p>
       <TrxHistoryList stocks={myTransactions(props.transactions.transactions, props.stocks.stocks, props.crypto.allcrypto)}/>
     </div>

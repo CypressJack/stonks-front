@@ -25,7 +25,6 @@ export default function Graph(props) {
   const [selectedPointValue, setSelectedPointValue] = useState();
   const [selectedPointMoney, setSelectedPointMoney] = useState();
 
-  console.log(selectedPoint);
 
   const LIVE = 'Live';
   const ONED = 'Day';
@@ -52,8 +51,6 @@ export default function Graph(props) {
     setSelectedColor('green-selected');
   };
 
-
-  
 
   const formatTooltip = format("($.2f")(-3.5);
   const TooltipContent = ({

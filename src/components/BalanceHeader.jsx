@@ -27,20 +27,20 @@ export default function BalanceHeader(props) {
 
   return (
     <div className='balance-header-container -header' onClick={props.onClick}>
-      <p className='balance-header-text'>
+      <p className='balance-header-text -header' onClick={props.onClick}>
         {props.name}
       </p>
-      <p className='balance-header-value'>
+      <p className='balance-header-value -header' onClick={props.onClick}>
         {profileValue}
       </p>
-      <div className='balance-header-change-container'>
-        <span className={`balance-dollar-change ${percentColor}`}>
+      <div className='balance-header-change-container -header' onClick={props.onClick}>
+        <span className={`balance-dollar-change -header ${percentColor}`} onClick={props.onClick}>
         {`${difference} `}
         </span>
-      <span className={`balance-header-change ${percentColor}`}>
+      <span className={`balance-header-change -header ${percentColor}`} onClick={props.onClick}>
         {`(${percentChange}) `}
       </span>
-      <span className='balance-header-timeline'>
+      <span className='balance-header-timeline -header' onClick={props.onClick}>
         {props.timeline}
       </span>
       </div>
