@@ -76,6 +76,15 @@ $box-shadow: #acacac;
 .MuiPaper-root {
   margin-bottom: 60px;
 }
+
+.MuiPaper-rounded {
+  color: $font-color-primary;
+  border: 2px solid $font-color-primary;
+  margin-bottom: 0px;
+  opacity: 100%;
+}
+
+
 //For individual tooltip position and style
 .MuiPaper-root.MuiAlert-root.MuiAlert-filledInfo.market-cap {
   margin-bottom: 355px;

@@ -15,8 +15,18 @@ export default function StockSummary(props) {
     formattedCap = `${marketCap.slice(0, 2)}B`
   };
 
+  if (marketCap.length === 15) {
+    formattedCap = `${marketCap.slice(0, 4)}M`
+  };
+
+  if (marketCap.length === 14) {
+    formattedCap = `${marketCap.slice(0, 3)}M`
+  };
+
+  console.log(typeof props.eps)
+
   const undef = (value) => {
-    if (!value){
+    if (!value || value === 'None'){
       return 'N/A'
     }
     return `$${value}`;
