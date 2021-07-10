@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //import components
 import BalanceHeader from '../BalanceHeader';
 import Graph from '../graph/Graph';
@@ -46,6 +46,7 @@ export default function Stock(props) {
   
   const [selectedData, setSelectedData] = useState(allData);
   const [timeLine, setTimeLine] = useState('Month');
+  const [view, setView] = useState('Month');
 
   let graphColor;
   let timeLineString;
@@ -55,7 +56,6 @@ export default function Stock(props) {
   } else {
     graphColor = '#C47777'
   };
-
 
   if (timeLine === 'Month' && selectedData.toString() !== monthData.toString()) {
     setSelectedData(monthData);
@@ -94,7 +94,6 @@ export default function Stock(props) {
   if (timeLine === 'All Time') {
     timeLineString = `${timeLine}`;
   };
-
 
   const checkOwned = (ownAr) => {
     if (ownAr){
@@ -226,6 +225,10 @@ export default function Stock(props) {
     }
   }, [props.tutMode]);
 
+  useEffect(()=>{
+    setView(timeLine);
+  },[selectedData])
+
   return (
     <main className='single-stock-container'>
       <BalanceHeader
@@ -238,12 +241,12 @@ export default function Stock(props) {
         onClick={(event) => {tutFunc(props.tutMode, event);}}
       />
   
-      {timeLine === 'Live' && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {timeLine === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {timeLine === 'Month' && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {timeLine === 'Week' && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {timeLine === 'Year' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {timeLine === 'All Time' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'All Time'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {view === 'Live' && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {view === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {view === 'Month' && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {view === 'Week' && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {view === 'Year' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {view === 'All Time' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'All Time'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
       <StockSummary
           name={props.data.stockData.name}
           symbol={props.data.stockData.symbol}
