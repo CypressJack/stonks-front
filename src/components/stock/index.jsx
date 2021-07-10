@@ -241,12 +241,12 @@ export default function Stock(props) {
         onClick={(event) => {tutFunc(props.tutMode, event);}}
       />
   
-      {view === 'Live' && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {view === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {view === 'Month' && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {view === 'Week' && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {view === 'Year' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {view === 'All Time' && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'All Time'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {(view === 'Live' && liveData) && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {(view === 'Day' && dayData) && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {(view === 'Month' && monthData) && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {(view === 'Week' && weekData) && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {(view === 'Year' && yearData) && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {(view === 'All Time' && yearData) && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'All Time'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
       <StockSummary
           name={props.data.stockData.name}
           symbol={props.data.stockData.symbol}
