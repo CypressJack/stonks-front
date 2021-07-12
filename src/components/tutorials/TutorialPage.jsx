@@ -19,11 +19,12 @@ export default function TutorialPage(props) {
       {props.paragraph2 && <p className={"tutorial-paragraphs"}>{props.paragraph2}</p>}
       {props.subtitle2 && <header className={"subtitle"}><b>{props.subtitle2}</b></header>}
       {props.paragraph3 && <p className={"tutorial-paragraphs"}>{props.paragraph3}</p>}
-      <div className={"back-button-container"}>
-      <Button back sell onClick={props.onClick}><KeyBoardReturn/></Button>
-      <Button back onClick={props.onComplete}><Check/></Button>
-      </div> */}
+  */}
       <Metrics/>
+        <div className={"back-button-container"}>
+        <Button back sell onClick={props.onClick}><KeyBoardReturn/></Button>
+        <Button back onClick={props.onComplete}><Check/></Button>
+      </div>
     </main>
     </Slide>
   );

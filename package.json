@@ -30,7 +30,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "cypress" : "cypress open -P ."
+    "cypress": "cypress open -P ."
   },
   "eslintConfig": {
     "extends": "react-app",
