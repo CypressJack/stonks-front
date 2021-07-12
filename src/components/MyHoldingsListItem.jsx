@@ -6,11 +6,7 @@ export default function MyHoldingsListItem(props) {
   let pctDisplay = `${props.pctChange}`;
   let displayNameDeconstructed = [...props.name];
   let displayName = '';
-  let displayPrice;
   let totalPrice;
-  let toParse;
-
-  let percentNum;
   let priceNum;
 
   if (typeof props.currentPrice === 'string') {
@@ -19,11 +15,9 @@ export default function MyHoldingsListItem(props) {
     priceNum = props.currentPrice;
   };
 
-  if (typeof props.pctChange === 'string') {
-    percentNum = parseFloat(props.pctChange);
-  } else {
+  if (typeof props.pctChange !== 'string') {
     priceNum = props.currentPrice;
-  };
+  }
 
   
   if (parseFloat(props.pctChange) >= 0.00) {
@@ -47,7 +41,6 @@ export default function MyHoldingsListItem(props) {
   }
   
   const displayPriceMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(priceNum))
-  displayPrice = displayPriceMoney;
 
   totalPrice = (parseFloat(props.amountOwned) * parseFloat(priceNum)).toFixed(2);
   const totalPriceMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(totalPrice))

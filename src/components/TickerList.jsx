@@ -90,7 +90,7 @@ export default function TickerList(props) {
 
   //Set Render for Crypto
   if((props.crypto.allcrypto && filter === "Crypto")){
-    composeTickerItems = props.crypto.allcrypto.map(ticker => {
+    composeTickerItems = props.crypto.allcrypto.map((ticker) => {
       if ((ticker.name).toLowerCase().startsWith(props.search) || (ticker.symbol).startsWith((props.search).toUpperCase())){
         return (
           <TickerListItem
@@ -107,6 +107,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Set render for common stocks
@@ -127,6 +128,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Set render for commodities
@@ -147,6 +149,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Set render for least volatile stocks
@@ -167,6 +170,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Set Render for most volatile
@@ -187,6 +191,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Set render for health stocks
@@ -207,6 +212,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //set render for capital goods
@@ -227,6 +233,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Sets the render for Finance Stocks
@@ -247,6 +254,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Sets the render to the default filter
@@ -267,6 +275,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
   //Sets the render for Tech Stocks
@@ -287,6 +296,7 @@ export default function TickerList(props) {
           />
         );
       }
+      return true;
     });
   }
 

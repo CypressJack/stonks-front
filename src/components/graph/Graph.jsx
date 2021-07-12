@@ -11,10 +11,7 @@ import {
 } from '@devexpress/dx-react-chart-material-ui';
 import { EventTracker } from '@devexpress/dx-react-chart';
 import { Animation } from '@devexpress/dx-react-chart';
-import { HoverState } from '@devexpress/dx-react-chart';
-import { SelectionState } from '@devexpress/dx-react-chart';
 import { ValueScale } from '@devexpress/dx-react-chart';
-import { format } from 'd3-format';
 import { scaleLinear } from 'd3-scale';
 
 
@@ -53,14 +50,9 @@ export default function Graph(props) {
     setSelectedColor('green-selected');
   };
 
-  const formatTooltip = format("($.2f")(-3.5);
   const TooltipContent = ({
     data, text, style, ...props
   }) => {
-    const alignStyle = {
-      ...style,
-      paddingLeft: '10px',
-    };
     return (
       <div>{selectedPointMoney}</div>
     );
@@ -68,7 +60,7 @@ export default function Graph(props) {
 
   useEffect(()=>{
     setSelectedPointValue(selectedPoint ? props.data[selectedPoint.point].value : null);
-  },[selectedPoint])
+  },[selectedPoint, props.data])
 
   useEffect(()=>{
     const profileValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(selectedPointValue)
@@ -104,7 +96,6 @@ export default function Graph(props) {
       <EventTracker
         onClick={targetData => {
           setSelectedPoint(targetData.targets[0] ? {series: 'line', point: targetData.targets[0].point} : false);
-          console.log(selectedPoint)
         }}
       />
       <Tooltip
