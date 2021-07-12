@@ -3,10 +3,8 @@ import "./TickerListItem.scss"
 
 export default function TickerListItem(props) {
   let pctClass = "red-percentage";
-  let pctDisplay = `${props.pctChange}`;
   let displayNameDeconstructed = [...props.name];
   let displayName = '';
-  let displayPrice;
   let percentNum;
   let priceNum;
 
@@ -24,7 +22,6 @@ export default function TickerListItem(props) {
   
   if (parseFloat(props.pctChange) >= 0.00) {
     pctClass = "green-percentage"
-    pctDisplay = `+${props.pctChange}`
   }
 
   if (displayNameDeconstructed.length > 17) {
@@ -33,12 +30,6 @@ export default function TickerListItem(props) {
     displayName = `${displayName}...`
   } else {
     displayName = props.name
-  }
-  //if lastsale comes in as a string, will parse to float and round to 2 decimals also format with dollar sign
-  if (typeof(props.lastSale) === 'number') {
-    displayPrice = `$${props.lastSale.toFixed(2)}`
-  } else {
-    displayPrice = props.lastSale
   }
 
   const displayPriceMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(priceNum))

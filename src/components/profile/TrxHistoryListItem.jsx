@@ -15,8 +15,6 @@ export default function TrxHistoryListItem(props) {
 
   const currentPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(parseFloat(props.price))
 
-  const displayTotalMoney = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(displayTotal)
-
   return (
     <li className="ticker-list-item" onClick={props.onClick}>
     <header className="ticker-head">

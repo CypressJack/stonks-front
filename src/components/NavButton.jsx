@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import "./Nav.scss";
 import Search from "@material-ui/icons/Search";
 import HelpIcon from "@material-ui/icons/HelpOutline";

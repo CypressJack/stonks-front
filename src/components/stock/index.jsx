@@ -7,7 +7,6 @@ import StockForm from './StockForm';
 import Dialogue from './Dialogue';
 
 import axios from 'axios';
-import useApiData from "../../hooks/useApiData";
 import TooltipBar from "../TooltipBar";
 
 export default function Stock(props) {
