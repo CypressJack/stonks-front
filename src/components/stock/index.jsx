@@ -60,6 +60,11 @@ export default function Stock(props) {
   if (timeLine === 'Month' && selectedData.toString() !== monthData.toString()) {
     setSelectedData(monthData);
   };
+
+  if (timeLine === 'Day' && selectedData.toString() !== dayData.toString()) {
+    setSelectedData(dayData);
+  };
+
   if (timeLine === 'Year' && selectedData.toString() !== yearData.toString()) {
     setSelectedData(yearData);
   };
@@ -242,7 +247,7 @@ export default function Stock(props) {
       />
   
       {(view === 'Live' && liveData) && <Graph data={liveData} color={graphColor} setTimeLine={setTimeLine} selected={'Live'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
-      {(view === 'Day' && dayData) && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
+      {view === 'Day' && <Graph data={dayData} color={graphColor} setTimeLine={setTimeLine} selected={'Day'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
       {(view === 'Month' && monthData) && <Graph data={monthData} color={graphColor} setTimeLine={setTimeLine} selected={'Month'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
       {(view === 'Week' && weekData) && <Graph data={weekData} color={graphColor} setTimeLine={setTimeLine} selected={'Week'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
       {(view === 'Year' && yearData) && <Graph data={yearData} color={graphColor} setTimeLine={setTimeLine} selected={'Year'} onClick={(event) => tutFunc(props.tutMode, event)}/>}
