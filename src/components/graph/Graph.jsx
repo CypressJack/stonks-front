@@ -101,7 +101,6 @@ export default function Graph(props) {
       valueField="value"
       argumentField="argument"
       color={props.color} />
-      <Animation/>
       <EventTracker
         onClick={targetData => {
           setSelectedPoint(targetData.targets[0] ? {series: 'line', point: targetData.targets[0].point} : false);
@@ -112,6 +111,7 @@ export default function Graph(props) {
       targetItem={selectedPoint}
       contentComponent={TooltipContent}
       />
+      {props.data[99] && <Animation/>}
       </Chart>
       <div className='graph-button-container' >
         <MuiButton onClick={()=> {setSelected(LIVE); props.setTimeLine(LIVE); setSelectedPoint(false)}} className={`MuiButton-graph ${classes.margin} ${selected === LIVE ?  selectedColor : unSelectedColor}`}>
